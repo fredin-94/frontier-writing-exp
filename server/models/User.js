@@ -23,4 +23,4 @@ const UserSchema = new Schema({
 });
 
 //make it seeable
-module.exports = User = mongoose.model("Users", UserSchema);
+module.exports = User = mongoose.model("users", UserSchema);

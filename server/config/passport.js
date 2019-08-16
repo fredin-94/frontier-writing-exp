@@ -8,7 +8,7 @@ const keys = require("../config/keys");
 
 //opts
 const options = {};
-options.jwyFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = keys.secretOrKey;
 
 //export passport

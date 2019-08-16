@@ -1,5 +1,5 @@
 //dependencies
-const Validator = require("valiator");
+const Validator = require("validator");
 const isEmpty = require("is-empty");
 
 //check if input data is valid
