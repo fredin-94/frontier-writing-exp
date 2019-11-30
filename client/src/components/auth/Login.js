@@ -1,5 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import classnames from 'classnames';
+
+import {loginUser} from '../../actions/authActions';
 
 class Login extends React.Component {
     
@@ -7,6 +12,24 @@ class Login extends React.Component {
         email : "",
         password : "",
         errors : {}
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.auth.isAuthenticated){
+            this.props.history.push('/homepage');
+        }
+
+        if(nextProps.errors){
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
+    componentDidMount(){
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/homepage'); //if user is logged in send to home page instead
+        }
     }
     
     onChange = (event)=>{
@@ -21,8 +44,8 @@ class Login extends React.Component {
             email: this.state.email,
             password: this.state.password
         }
-
-        console.log(`USER LOGGING IN: ${userData}`);
+        this.props.loginUser(userData);
+        console.log(userData);
     }
 
     render(){
@@ -54,8 +77,15 @@ class Login extends React.Component {
                                     error={errors.email}
                                     type="email"
                                     id="email"
+                                    className={classnames('', {
+                                        invalid: errors.email || errors.emailnotfound
+                                    })}
                                 />
                                 <label htmlFor="email">E-Mail</label>
+                                <span className=""red-text>
+                                    {errors.email}
+                                    {errors.emailnotfound}
+                                </span>
                             </div>
                             <div className="input-field col s12">
                                 <input
@@ -64,8 +94,15 @@ class Login extends React.Component {
                                     value={this.state.password}
                                     onChange={this.onChange}
                                     error={errors.password}
+                                    className={classnames('',{
+                                        invalid: errors. password || errors.passwordincorrect
+                                    })}
                                 />
                                 <label htmlFor="password">Password</label>
+                                <span className=""red-text>
+                                    {errors.password}
+                                    {errors.passwordincorrect}
+                                </span>
                             </div>
                             <div>
                                 <button
@@ -83,4 +120,15 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state)=>({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps,{loginUser})(Login);
