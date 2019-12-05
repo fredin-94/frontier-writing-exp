@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default ()=>{
-    return <div>
-        Comment list
-    </div>
+class CommentList extends React.Component{
+    render(){
+        return(
+            <div>
+                list
+            </div>
+        );
+    }
 }
+
+export default CommentList;

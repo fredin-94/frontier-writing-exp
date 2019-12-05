@@ -13,6 +13,7 @@ import setAuthToken from './utils/setAuthToken'; //
 import {setCurrentUser, logoutUser} from './actions/authActions'; //
 import PrivateRoutes from './components/private-routes/PrivateRoutes';
 import Homepage from './components/pages/Homepage';
+import SelectedBook from './components/userPages/SelectedBook';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
 
@@ -46,6 +47,7 @@ class App extends Component {
             <Route exact path="/login" component = {Login}/>
             <Switch>
               <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
+              <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
             </Switch>
           </div>
         </BrowserRouter>
