@@ -1,13 +1,19 @@
-import React from 'react';
+/* import React from 'react';
 //import ReactDOM from 'react-dom';
 import {mount} from 'enzyme'; 
 
 import CommentBox from 'components/comments/CommentBox';
+import Root from 'Root';
+
 
 let component;
 
 beforeEach(()=>{
-    component = mount(<CommentBox/>);
+    component = mount(
+        <Root>
+            <CommentBox/>
+        </Root>
+    );
 });
 
 afterEach(()=>{
@@ -44,5 +50,5 @@ describe('the textarea', ()=>{
         component.update();
         expect(component.find('textarea').prop('value')).toEqual('');
     });
-
-}); 
+                                                                                            
+});  */

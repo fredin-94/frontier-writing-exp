@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import * as actions from 'actions/commentActions';
 
 class CommentBox extends React.Component {
     
@@ -12,10 +15,15 @@ class CommentBox extends React.Component {
         });
     }
 
+    componentDidMount(){ //move to other component? probably
+        this.props.getComments();
+    }
+
     handleSubmit = (e)=>{
         e.preventDefault();
 
         //save comment by calling action creator
+        this.props.saveComment(this.state.comment);
 
         this.setState({
             comment: ''
@@ -37,4 +45,4 @@ class CommentBox extends React.Component {
     }
 }
 
-export default CommentBox;
+export default connect(null, actions)(CommentBox);

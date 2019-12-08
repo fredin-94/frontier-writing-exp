@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme'; //doesnt render react child components
 
@@ -47,4 +47,4 @@ we dont want to know what code is inside other components in this testfile
   //const div = document.createElement('div');
     //ReactDOM.render(<SelectedBook/>, div); //try to render the app component, to make sure it doesnt crash
     //expect(div.innerHTML).toContain(stuff);
-    //ReactDOM.unmountComponentAtNode(div); //destroy objects created during the test
+    //ReactDOM.unmountComponentAtNode(div); //destroy objects created during the test */

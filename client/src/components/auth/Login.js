@@ -95,7 +95,7 @@ class Login extends React.Component {
                                     onChange={this.onChange}
                                     error={errors.password}
                                     className={classnames('',{
-                                        invalid: errors. password || errors.passwordincorrect
+                                        invalid: errors.password || errors.passwordincorrect
                                     })}
                                 />
                                 <label htmlFor="password">Password</label>

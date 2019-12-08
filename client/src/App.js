@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode'; //
 //Local:
-import store from './store';
+import store from './store'; //c
 import Navbar from './components/shared-layout/Navbar';
 import LandingPage from './components/shared-layout/LandingPage';
 import Register from './components/auth/Register';
@@ -14,6 +13,8 @@ import {setCurrentUser, logoutUser} from './actions/authActions'; //
 import PrivateRoutes from './components/private-routes/PrivateRoutes';
 import Homepage from './components/pages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
+
+import Root from 'Root'; //idk if all will work if i have 2 stores...
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
 
@@ -33,25 +34,24 @@ if(localStorage.jwtToken){
 }
 
 
-
-
 class App extends Component {
   render(){
     return (
-      <Provider store={store}>
+      <Root>
         <BrowserRouter>
           <div className="App">
             <Navbar/>
             <Route exact path="/" component = {LandingPage}/>
             <Route exact path="/register" component = {Register}/>
             <Route exact path="/login" component = {Login}/>
+            <Route exact path="/book" component = {SelectedBook}/>
             <Switch>
               <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
               <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
             </Switch>
           </div>
         </BrowserRouter>
-      </Provider>
+      </Root>
     );
   }
 }
