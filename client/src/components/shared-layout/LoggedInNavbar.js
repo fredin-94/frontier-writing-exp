@@ -1,21 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-class Navbar extends React.Component{
+class LoggedInNavbar extends React.Component{
   render(){
     return(
       <div className="navbar-fixed">
         <nav className="z-depth-0">
           <div className="nav-wrapper white">
 
-            <Link to="/" className="col s5 brand-logo center black-text">
-              <i className="material-icons">code</i>
-              FRONTIER-BLOGGING-EXP
-            </Link>
-
             <Link to="/" className="col s5 black-text">
               <i className="material-icons">code</i>
-              Log in
+              Home
+            </Link>
+
+            <Link to="/userPage" className="col s5 black-text">
+              My page
+            </Link>
+
+            <Link to="/userBooks" className="col s5 black-text">
+              Log out
             </Link>
 
           </div>
@@ -25,4 +28,4 @@ class Navbar extends React.Component{
   }
 }
 
-export default Navbar;
+export default LoggedInNavbar;

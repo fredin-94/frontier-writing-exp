@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {logoutUser} from '../../actions/authActions';
+import LoggedInNavbar from 'components/shared-layout/LoggedInNavbar';
 
 class Homepage extends Component {
     onLogoutClick = (e)=>{
@@ -15,6 +16,7 @@ class Homepage extends Component {
 
         return(
             <div className="container">
+                <LoggedInNavbar/>
                 <div className="row">
                     <div className="col s12 center-align">
                         <h4>Welcome {user.name}</h4>

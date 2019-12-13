@@ -9,7 +9,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action){
-    if(action.type === SET_CURRENT_USER){ // == or === 
+    if(action.type === SET_CURRENT_USER){ 
         return {
             ...state,
             isAuthenticated: !isEmpty(action.payload),

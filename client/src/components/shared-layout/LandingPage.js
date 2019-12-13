@@ -2,6 +2,29 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 class LandingPage extends React.Component{
+
+    validateUser = ()=>{
+        if(this.props.isAuthenticated){ //if user clicks log out they should log out, look how this was done on another page
+            return(
+                <div>
+                    <button>log out</button> 
+                </div>
+            );        
+        }
+        else if(!this.props.isAuthenticated){ //if user is logged out
+            //change stuff in render depending on if user is logged in
+        }
+    }
+
+    componentDidMount(){
+        if(this.props.isAuthenticated){ //if user is logged in they should not see this page
+
+            this.history.push('/homepage'); //make this work
+
+        }
+
+    }
+   
     render(){
         return(
             <div style={{ height: "75vh" }} className="container valign-wrapper">

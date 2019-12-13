@@ -17,6 +17,7 @@ class CommentList extends React.Component{//classbased component
         return(
             <div>
                 <ul>
+                    <h5> {this.props.comments.length} Comments:</h5>
                     {this.renderComments()}
                 </ul>
             </div>
