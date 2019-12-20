@@ -7,9 +7,10 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers'; //index
 
+import stateValidator from 'middlewares/developmentStateValidation';
 //const initialState = {};
 
-const middleware = [thunk, reduxPromise];
+const middleware = [thunk, reduxPromise, stateValidator];
 
 //wrap other components
 export default ({children, initialState = {} })=>{
