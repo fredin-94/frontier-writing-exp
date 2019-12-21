@@ -1,22 +1,27 @@
 //dependencies
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+
+//const http = require('http');
+const morgan = require('morgan');
+
 //local
-const users = require("./routes/api/users");
+const users = require('./routes/api/users');
+
 //initialization
 const app = express();
 
 //middleware setup
+app.use(morgan('combined')); //middleware to log requests to console (for debugging)
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //parse any request as json
 
-//connect to mongo
-const db = require("./config/keys.js").mongoURI;
-
+//connect to mongoDB
+const db = require('./config/keys.js').mongoURI;
 mongoose.connect(
   db, {useNewUrlParser: true}
 )
@@ -28,7 +33,7 @@ app.use(passport.initialize());
 require("./config/passport.js")(passport);
 
 //routes
-app.use("/api/users", users);
+app.use('/api/users', users);
 
 //set port
 const port = process.env.PORT || 5000;

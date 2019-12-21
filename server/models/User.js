@@ -10,6 +10,8 @@ const UserSchema = new Schema({
   },
   email : {
     type: String,
+    unique: true,
+    lowercase: true,
     required: true
   },
   password : {
@@ -23,4 +25,4 @@ const UserSchema = new Schema({
 });
 
 //make it seeable
-module.exports = User = mongoose.model("users", UserSchema);
+module.exports = User = mongoose.model('users', UserSchema);

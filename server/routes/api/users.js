@@ -12,7 +12,7 @@ const validateUserLoginInput = require("../../validation/login.js");
 const User = require("../../models/User.js");
 
 //@ POST api/users/register
-router.post("/register", (req, res)=>{
+router.post("/register", (req, res, next)=>{
   //check if valid input
   const {errors, isValid} = validateUserRegisterInput(req.body);
 
@@ -31,7 +31,7 @@ router.post("/register", (req, res)=>{
         password: req.body.password
       });
 
-      //if new user, hash PW, send request
+      //if new user, hash/encrypt PW, send request
       bcrypt.genSalt(10, (err, salt)=>{ //salt to add noise data to PW
         bcrypt.hash(newUser.password, salt, (err, hash)=>{
           if(err){
@@ -53,12 +53,15 @@ router.post("/register", (req, res)=>{
       }); //gensalt end
 
     } //else end
+  })
+  .catch((err)=>{ //added now, idk if we need?
+    return next(err);
   }); //find user end
 
 });
 
 //@route POST api/users/login
-router.post("/login", (req,res)=>{
+router.post("/login", (req,res, next)=>{
   const {errors, isValid} = validateUserLoginInput(req.body);
 
   if(!isValid){
