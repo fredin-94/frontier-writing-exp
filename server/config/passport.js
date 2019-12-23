@@ -1,10 +1,11 @@
 //dependencies
-const mongoose = require("mongoose");
-const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
+const mongoose = require('mongoose');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
 //local:
 const User = mongoose.model("users");
-const keys = require("../config/keys");
+const keys = require('../config/keys');
 
 //opts
 const options = {};

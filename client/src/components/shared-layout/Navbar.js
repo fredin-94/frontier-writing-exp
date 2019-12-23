@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-class Navbar extends React.Component{
+class Navbar extends React.Component{ //choose which to show for logged in /out users
   render(){
     return(
       <div className="navbar-fixed">
@@ -13,9 +13,20 @@ class Navbar extends React.Component{
               FRONTIER-BLOGGING-EXP
             </Link>
 
-            <Link to="/" className="col s5 black-text">
-              <i className="material-icons">code</i>
-              Log in
+            <Link to="/signout" className="col s5 black-text">
+              Sign out
+            </Link>
+
+            <Link to="/signin" className="col s5 black-text">
+              Sign in
+            </Link>
+
+            <Link to="/about" className="col s5 black-text">
+              About
+            </Link>
+
+            <Link to="/mypage" className="col s5 black-text"> 
+              My Page
             </Link>
 
           </div>
