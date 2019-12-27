@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+//const cors = require('cors');
 //const http = require('http');
 const morgan = require('morgan');
 
@@ -15,6 +16,7 @@ const app = express();
 
 //middleware setup
 app.use(morgan('combined')); //middleware to log requests to console (for debugging)
+//app.use(cors()); //accept requests from anywhere (change it later to only accept requests from our website, or remove this cors )
 app.use(bodyParser.urlencoded({
   extended: true
 }));

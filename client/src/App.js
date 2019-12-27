@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Suspense} from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import jwt_decode from 'jwt-decode'; //
 //Local:
@@ -15,6 +15,7 @@ import Homepage from './components/pages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
+import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
 
@@ -33,7 +34,16 @@ if(localStorage.jwtToken){
   }
 }
 
+const LazyMyPage = React.lazy(()=>
+  import('components/userPages/MyPage')
+);
 
+/* const AsyncMyPage = asyncLoadComponent(()=>{//make this page load asynchronously
+  return import('components/userPages/MyPage'); //might not be correct route though
+}); */
+
+
+//suspence fallback is used with react.lazy, needed since the user should see something while they wait for the page to load
 class App extends Component {
   render(){
     return (
@@ -45,10 +55,13 @@ class App extends Component {
             <Route exact path="/register" component = {Register}/>
             <Route exact path="/login" component = {Login}/>
             <Route exact path="/book" component = {SelectedBook}/>
-            <Switch>
-              <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
-              <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
-            </Switch>
+            <Suspense fallback = {<div>Loading...</div>}>
+              <Switch>
+                <PrivateRoutes exact path="/mypage" component = {LazyMyPage}/>
+                <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
+                <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
+              </Switch>
+            </Suspense>
           </div>
         </BrowserRouter>
       </Root>

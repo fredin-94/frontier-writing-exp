@@ -25,7 +25,7 @@ export const loginUser = (userData)=>(dispatch)=>{
     .then((res)=>{
         const token = res.data.token;
 
-        localStorage.setItem('jwtToken', token);
+        localStorage.setItem('jwtToken', token); //store token in browser memory so that user doesnt get logged out everytime they go to a new page
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(setCurrentUser(decoded));

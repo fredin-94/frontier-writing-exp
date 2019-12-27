@@ -1,7 +1,38 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 class Navbar extends React.Component{ //choose which to show for logged in /out users
+  
+  renderLinks(){
+    if(this.props.isAuthenticated){
+      return(
+         <div>
+          <Link to="/mypage" className="col s5 black-text"> 
+                  My Page
+          </Link>
+
+          <Link to="/signout" className="col s5 black-text">
+                Sign out
+          </Link>
+        </div>
+      );
+     
+    } else{
+        return(
+          <div>
+            <Link to="/signin" className="col s5 black-text">
+                Sign in
+            </Link>
+
+            <Link to="/signup" className="col s5 black-text">
+                Sign up
+            </Link>
+          </div>
+        );
+    }
+  }
+  
   render(){
     return(
       <div className="navbar-fixed">
@@ -13,21 +44,11 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
               FRONTIER-BLOGGING-EXP
             </Link>
 
-            <Link to="/signout" className="col s5 black-text">
-              Sign out
-            </Link>
-
-            <Link to="/signin" className="col s5 black-text">
-              Sign in
-            </Link>
-
             <Link to="/about" className="col s5 black-text">
               About
             </Link>
 
-            <Link to="/mypage" className="col s5 black-text"> 
-              My Page
-            </Link>
+           {this.renderLinks()}
 
           </div>
         </nav>
@@ -36,4 +57,10 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
   }
 }
 
-export default Navbar;
+function mapStateToProps(){
+  return {
+    isAuthenticated : state.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(Navbar);
