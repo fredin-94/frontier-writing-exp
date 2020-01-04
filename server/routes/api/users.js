@@ -3,6 +3,11 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+//the redis server has to be running for this to work: 
+//(by opening bash in the redis folder in d/programs and running src/redis-server)
+const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
+
 //local dependencies
 const keys = require("../../config/keys.js");
 //input validation
@@ -68,6 +73,12 @@ router.post("/login", (req,res, next)=>{
     return res.status(400).json(errors); //400 = bad request
   }
 
+  if(req.headers.authorization){ //if it has a jwt token? maybe big A?
+    return getAuthTokenId(req,res);
+  }else{ //if not then create the token, set the token in the db and return the session give user a token and maybe id? 324
+
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -90,6 +101,8 @@ router.post("/login", (req,res, next)=>{
             success: true,
             token: "Bearer " + token
           });
+
+          setToken(token, payload.id); //maybe move this, maybe need to return it 
         });
 
       }else{
@@ -98,5 +111,50 @@ router.post("/login", (req,res, next)=>{
     });
   });
 });
+
+//here token is set as the key and ID to be its value, so change this later
+const setToken = (tokenKey, idValue)=>{ 
+  return Promise.resolve(redisClient.set(tokenKey, idValue))
+}
+
+const getAuthTokenId = (req,res)=>{
+  const auth = req.headers.authorization;
+  return redisClient.get(auth, (err, reply)=>{
+    if(err || !reply){
+      return res.status(400).json('Not authorized');
+    }
+
+    return res.json({id: reply});
+  });
+}
+
+//update information of a user
+//:: TODO: FINISH THIS THING: (also get rid of duplicated code)
+router.patch('/updateUser/:id', (req,res,next)=>{
+  const id = req.params.id;
+
+  const email = req.body.email;
+
+  const {name, age, profilePicture, password} = req.body.formInput;
+
+  User.findOne({email})
+  .then((user)=>{
+    if(!user){
+      return res.status(400).json({emailnotfound: "Email Not Found"});
+    }
+
+    const updatedUserInfo = new User({
+      name : req.body.name,
+      email : req.body.email,
+      password: req.body.password
+    });
+
+    res.json(updatedUserInfo);
+  })
+  .catch((err)=>{
+    res.status(400).json('Error, could not update user');
+  })
+})
+
 
 module.exports = router;

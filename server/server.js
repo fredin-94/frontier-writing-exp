@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
+
 //const cors = require('cors');
 //const http = require('http');
 const morgan = require('morgan');
@@ -43,3 +45,7 @@ const port = process.env.PORT || 5000;
 app.listen(
   port, ()=> console.log(`Server running on port ${port}.`)
 );
+
+module.exports = {
+  redisClient : redisClient
+}

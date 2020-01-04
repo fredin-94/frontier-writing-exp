@@ -21,7 +21,27 @@ export const registerUser  = (userData, history)=>(dispatch)=>{
 };
 
 export const loginUser = (userData)=>(dispatch)=>{
-    axios.post('/api/users/login', userData)
+
+    const localToken = window.localStorage.getItem('token'); //maybe wrong
+
+    if(token){
+        /* have the config, the axios req and idk 325
+        if we have the token we can then request tex to go to the 
+        /profile/id route if such exists since we have the id and are logged in
+
+        */
+    } 
+    /*
+        else if there is no token, tex on signin, we want to go save the token and such
+    */
+
+    let config = {
+        headers:{
+            'Authorization' : 'Bearer ' + localToken
+        }
+    }
+
+    axios.post('/api/users/login', userData, config)
     .then((res)=>{
         const token = res.data.token;
 
