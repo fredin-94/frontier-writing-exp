@@ -15,7 +15,7 @@ import Homepage from './components/pages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
-import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
+//import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
 

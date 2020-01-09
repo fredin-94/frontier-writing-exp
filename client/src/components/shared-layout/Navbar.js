@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 
 class Navbar extends React.Component{ //choose which to show for logged in /out users
   
+  state = {
+
+  }
+
   renderLinks(){
     if(this.props.isAuthenticated){
       return(
@@ -59,7 +63,7 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
 
 function mapStateToProps(){
   return {
-    isAuthenticated : state.isAuthenticated
+    //isAuthenticated : state.isAuthenticated
   }
 }
 

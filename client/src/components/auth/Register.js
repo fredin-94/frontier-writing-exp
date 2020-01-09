@@ -15,12 +15,19 @@ class Register extends React.Component{
         errors : {}
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.errors){
+    static getDerivedStateFromProps(nextProps, prevState){
+    /*     if(nextProps.errors){
             this.setState({
                 errors: nextProps.errors
             });
+        } */
+
+        if(nextProps.errors !== prevState.errors){
+            return {
+                errors: nextProps.errors
+            }
         }
+        else return null;
     }
 
     componentDidMount(){
@@ -28,8 +35,12 @@ class Register extends React.Component{
             this.props.history.push('/homepage'); //if user is logged in send to home page instead
         }
     }
-    componentDidUpdate(){
-
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.errors !== this.state.errors){
+            this.setState({
+                errors: prevProps.errors
+            });
+        }
     }
 
     onChange = (event)=>{

@@ -24,7 +24,7 @@ export const loginUser = (userData)=>(dispatch)=>{
 
     const localToken = window.localStorage.getItem('token'); //maybe wrong
 
-    if(token){
+    if(localToken){
         /* have the config, the axios req and idk 325
         if we have the token we can then request tex to go to the 
         /profile/id route if such exists since we have the id and are logged in

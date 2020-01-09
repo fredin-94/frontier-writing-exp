@@ -14,17 +14,26 @@ class Login extends React.Component {
         errors : {}
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.auth.isAuthenticated){
-            this.props.history.push('/homepage');
-        }
+    static getDerivedStateFromProps(nextProps, prevState){
+         if(nextProps.auth.isAuthenticated){
+             this.props.history.push('/homepage');
+         }
 
-        if(nextProps.errors){
-            this.setState({
+        if(nextProps.errors !== prevState.errors){
+            return {
                 errors: nextProps.errors
+            }
+        }
+        else return null;
+    }
+
+     componentDidUpdate(prevProps, prevState){
+        if(prevState.errors !== this.state.errors){
+            this.setState({
+                errors: prevProps.errors
             });
         }
-    }
+    } 
 
     componentDidMount(){
         if(this.props.auth.isAuthenticated){
@@ -82,7 +91,7 @@ class Login extends React.Component {
                                     })}
                                 />
                                 <label htmlFor="email">E-Mail</label>
-                                <span className=""red-text>
+                                <span className="red-text">
                                     {errors.email}
                                     {errors.emailnotfound}
                                 </span>
@@ -99,7 +108,7 @@ class Login extends React.Component {
                                     })}
                                 />
                                 <label htmlFor="password">Password</label>
-                                <span className=""red-text>
+                                <span className="red-text">
                                     {errors.password}
                                     {errors.passwordincorrect}
                                 </span>
@@ -120,6 +129,7 @@ class Login extends React.Component {
     }
 }
 
+//what props this component needs
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
