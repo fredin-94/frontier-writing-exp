@@ -10,17 +10,26 @@ const UserSchema = new Schema({
   },
   email : {
     type: String,
-    //unique: true,
-    //lowercase: true,
+    unique: true,
+    lowercase: true,
     required: true
   },
   password : {
     type: String,
     required: true
   },
-  date: {
+  dateOfBecomingMember: { //dont think i need, but lets keep for now
     type: Date,
-    default: Date.now
+    default: Date.now //maybe remove?? or will it work??
+  },
+  profileImg:{
+    type: String
+  },
+  profileDescription:{
+    type: String
+  },
+  books:{ //array of books of type string, then we can look at book data to see if they r an author or contributor to separate the books
+    type: [String]
   }
 });
 

@@ -44,7 +44,7 @@ class Login extends React.Component {
             [event.target.id] : event.target.value
         });
     }
-    onSubmit = async (event)=>{
+    onSubmit = async (event)=>{ //can remove async i think
         event.preventDefault();
 
         const userData = {
