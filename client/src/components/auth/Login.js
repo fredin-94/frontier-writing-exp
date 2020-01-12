@@ -15,10 +15,13 @@ class Login extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-         if(nextProps.auth.isAuthenticated){
-             this.props.history.push('/homepage');
-         }
-
+       /*  if(nextProps!==undefined){
+            if(nextProps.auth.isAuthenticated){
+                nextProps.props.history.push('/homepage');
+            }
+        } */
+       
+        
         if(nextProps.errors !== prevState.errors){
             return {
                 errors: nextProps.errors
@@ -27,12 +30,10 @@ class Login extends React.Component {
         else return null;
     }
 
-     componentDidUpdate(prevProps, prevState){
-        if(prevState.errors !== this.state.errors){
-            this.setState({
-                errors: prevProps.errors
-            });
-        }
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.auth.isAuthenticated){
+            this.props.history.push('/homepage');
+       }
     } 
 
     componentDidMount(){
@@ -46,14 +47,19 @@ class Login extends React.Component {
             [event.target.id] : event.target.value
         });
     }
-    onSubmit = (event)=>{
+    onSubmit = async (event)=>{
         event.preventDefault();
 
         const userData = {
             email: this.state.email,
             password: this.state.password
         }
-        this.props.loginUser(userData);
+
+        await this.props.loginUser(userData);
+
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/homepage'); 
+        }
         console.log(userData);
     }
 

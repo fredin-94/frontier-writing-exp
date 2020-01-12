@@ -1,4 +1,4 @@
-const redisClient = require('../server').redisClient;
+/* const redisClient = require('../server').redisClient;
 
 //block user from reaching certain endpoints unless they are authorized
 const requireAuth = (req,res,next)=>{
@@ -16,8 +16,8 @@ const requireAuth = (req,res,next)=>{
 
         return next();
     });
-}
+} */
 
-module.exports = {
-    requireAuth: requireAuth
-}
+//module.exports = {
+    //requireAuth: requireAuth
+//}

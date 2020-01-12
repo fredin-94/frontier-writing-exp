@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 //the redis server has to be running for this to work: 
 //(by opening bash in the redis folder in d/programs and running src/redis-server)
-const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
+//const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
 
 //local dependencies
 const keys = require("../../config/keys.js");
@@ -74,7 +74,7 @@ router.post("/login", (req,res, next)=>{
   }
 
   if(req.headers.authorization){ //if it has a jwt token? maybe big A?
-    return getAuthTokenId(req,res);
+    //return getAuthTokenId(req,res);
   }else{ //if not then create the token, set the token in the db and return the session give user a token and maybe id? 324
 
   }
@@ -102,7 +102,7 @@ router.post("/login", (req,res, next)=>{
             token: "Bearer " + token
           });
 
-          setToken(token, payload.id); //maybe move this, maybe need to return it 
+          //setToken(token, payload.id); //maybe move this, maybe need to return it 
         });
 
       }else{
@@ -113,7 +113,7 @@ router.post("/login", (req,res, next)=>{
 });
 
 //here token is set as the key and ID to be its value, so change this later
-const setToken = (tokenKey, idValue)=>{ 
+/* const setToken = (tokenKey, idValue)=>{ 
   return Promise.resolve(redisClient.set(tokenKey, idValue))
 }
 
@@ -126,11 +126,11 @@ const getAuthTokenId = (req,res)=>{
 
     return res.json({id: reply});
   });
-}
+} */
 
 //update information of a user
 //:: TODO: FINISH THIS THING: (also get rid of duplicated code)
-router.patch('/updateUser/:id', (req,res,next)=>{
+/* router.patch('/updateUser/:id', (req,res,next)=>{
   const id = req.params.id;
 
   const email = req.body.email;
@@ -155,6 +155,6 @@ router.patch('/updateUser/:id', (req,res,next)=>{
     res.status(400).json('Error, could not update user');
   })
 })
-
+ */
 
 module.exports = router;

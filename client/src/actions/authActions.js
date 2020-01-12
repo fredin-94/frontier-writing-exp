@@ -21,41 +21,52 @@ export const registerUser  = (userData, history)=>(dispatch)=>{
 };
 
 export const loginUser = (userData)=>(dispatch)=>{
+    console.log('in loginuder action');
+    //const localToken = window.localStorage.getItem('token'); //maybe wrong
 
-    const localToken = window.localStorage.getItem('token'); //maybe wrong
-
-    if(localToken){
+    //if(localToken){
         /* have the config, the axios req and idk 325
         if we have the token we can then request tex to go to the 
         /profile/id route if such exists since we have the id and are logged in
 
         */
-    } 
+    //} 
     /*
         else if there is no token, tex on signin, we want to go save the token and such
     */
 
-    let config = {
-        headers:{
+    //let config = { //can use for axios request if needed
+       /*  headers:{
             'Authorization' : 'Bearer ' + localToken
-        }
-    }
+        } */
+    //}
 
-    axios.post('/api/users/login', userData, config)
+    axios.post('/api/users/login', userData)
     .then((res)=>{
         const token = res.data.token;
+
 
         localStorage.setItem('jwtToken', token); //store token in browser memory so that user doesnt get logged out everytime they go to a new page
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(setCurrentUser(decoded));
 
+        console.log('in loginuder action, res bracket for axioz');
+
     })
     .catch((err)=>{
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        });
+        if(err.response === null){
+            dispatch({
+                type: GET_ERRORS,
+                payload: null
+            });
+        }else{ //keep only the stuff in the else statement later
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+        }
+        
     });
 };
 

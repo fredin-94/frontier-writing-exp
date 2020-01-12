@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
-const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
+//const redis = require('redis'), redisClient = redis.createClient({host: '127.0.0.1'});
 
 //const cors = require('cors');
 //const http = require('http');
@@ -47,5 +47,5 @@ app.listen(
 );
 
 module.exports = {
-  redisClient : redisClient
+  //redisClient : redisClient
 }

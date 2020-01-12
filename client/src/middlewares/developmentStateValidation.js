@@ -7,7 +7,7 @@ export default ({dispatch, getState})=> (next)=> (action)=>{
     next(action);
 
     if(!tv4.validate(getState(), stateSchema)){
-        console.warn('Invalid state of schema found, probably in some reducer');
+        //console.warn('Invalid state of schema found, probably in some reducer');
     }
 
 };
