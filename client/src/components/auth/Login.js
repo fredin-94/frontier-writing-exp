@@ -15,12 +15,9 @@ class Login extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-       /*  if(nextProps!==undefined){
-            if(nextProps.auth.isAuthenticated){
-                nextProps.props.history.push('/homepage');
-            }
-        } */
-       
+        if(nextProps.auth.isAuthenticated){
+            nextProps.history.push('/homepage');
+        }
         
         if(nextProps.errors !== prevState.errors){
             return {
@@ -32,7 +29,7 @@ class Login extends React.Component {
 
     componentDidUpdate(prevProps, prevState){
         if(prevProps.auth.isAuthenticated){
-            this.props.history.push('/homepage');
+            prevProps.history.push('/homepage'); //or this.props?
        }
     } 
 

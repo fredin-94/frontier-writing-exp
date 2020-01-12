@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode'; //
 //Local:
 import store from './store'; //c
 import Navbar from './components/shared-layout/Navbar';
+import Logo from './components/shared-layout/Logo';
 import LandingPage from './components/shared-layout/LandingPage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -50,6 +51,7 @@ class App extends Component {
       <Root>
         <BrowserRouter>
           <div className="App">
+            <Logo/>
             <Navbar/>
             <Route exact path="/" component = {LandingPage}/>
             <Route exact path="/register" component = {Register}/>
