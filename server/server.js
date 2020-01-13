@@ -12,6 +12,7 @@ const morgan = require('morgan');
 
 //local
 const users = require('./routes/api/users');
+const books = require('./routes/api/books');
 
 //initialization
 const app = express();
@@ -38,6 +39,7 @@ require("./config/passport.js")(passport);
 
 //routes
 app.use('/api/users', users);
+app.use('/api/books', books);
 
 //set port
 const port = process.env.PORT || 5000;

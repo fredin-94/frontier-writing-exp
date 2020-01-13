@@ -65,7 +65,7 @@ router.post("/register", (req, res, next)=>{
 
 });
 
-//@route POST api/users/login
+//@route POST api/users/login - should this be a post at all?
 router.post("/login", (req,res, next)=>{
   const {errors, isValid} = validateUserLoginInput(req.body);
 

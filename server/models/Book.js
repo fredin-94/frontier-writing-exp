@@ -36,6 +36,10 @@ const BookSchema = new Schema({
   bookId:{
       type: String,
       required: true
+  },
+  language:{
+    type: String,
+    required: true
   }
 });
 
