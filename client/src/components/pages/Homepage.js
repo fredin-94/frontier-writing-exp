@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 
 import {logoutUser} from '../../actions/authActions';
 
@@ -45,7 +46,9 @@ class Homepage extends Component {
 
                         <div>
                             <p>You have 0 books available.</p>
-                            <button>Write a new book</button>
+                            <button>
+                                <Link to='/createBook'>Create a new book</Link>    
+                            </button>
                         </div>
 
                     </div>

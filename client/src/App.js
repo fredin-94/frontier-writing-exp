@@ -16,6 +16,7 @@ import Homepage from './components/pages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
+import CreateBook from 'components/userPages/CreateBook';
 //import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
@@ -56,12 +57,12 @@ class App extends Component {
             <Route exact path="/" component = {LandingPage}/>
             <Route exact path="/register" component = {Register}/>
             <Route exact path="/login" component = {Login}/>
-            <Route exact path="/book" component = {SelectedBook}/>
             <Suspense fallback = {<div>Loading...</div>}>
               <Switch>
+                <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
                 <PrivateRoutes exact path="/mypage" component = {LazyMyPage}/>
                 <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
-                <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
+                <PrivateRoutes exact path="/createBook" component = {CreateBook}/>
               </Switch>
             </Suspense>
           </div>
