@@ -58,13 +58,13 @@ class Homepage extends Component {
     }
 }
 
-Homepage.propTypes = {
+/* Homepage.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
-}
+} */
 
 const mapStateToProps = (state)=>({
-    auth: state.auth
+    //auth: state.auth
 });
 
-export default connect(mapStateToProps,{logoutUser})(Homepage);
+export default connect(mapStateToProps)(Homepage);

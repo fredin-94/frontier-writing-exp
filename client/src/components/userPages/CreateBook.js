@@ -30,7 +30,7 @@ class CreateBook extends Component {
                 </div>
             );
         }else {
-            <button onClick={}>Add Chapter</button> /* should set add chapter to true */
+           // <button onClick={}>Add Chapter</button> /* should set add chapter to true */
         }
     }
 
@@ -67,7 +67,12 @@ class CreateBook extends Component {
 }
 
 const mapStateToProps = (state)=>({//may not need since we dont care abt the state anyway
-    //books: state.book
+    //books: state.books //to reach the book state via this.props.books instead
+    //we wont need it tho i think, so maybe mstp can be null and we only use the 2nd param of conenct for maptodispatch
 });
 
-export default connect(mapStateToProps, {createBook})(CreateBook);
+export default connect(null, {createBook})(CreateBook);
+
+//since this component doesnt care if anything is updated in the store (ithink) we can have mstp as null
+//we can have the mapdispatchtoprops but we dont need to, it just looks nicer in code
+/* since you can write props.createbook(stuff) instead of props.dispatch(createbook(stuff)) */
