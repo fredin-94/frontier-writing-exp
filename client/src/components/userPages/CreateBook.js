@@ -11,7 +11,9 @@ class CreateBook extends Component {
         title: '',
         author: '', //or authors??
         chapters: [],
-        summary: ''
+        chapter: '',
+        summary: '',
+        language: ''
     }
 
     onClickAddChapter = (e)=>{
@@ -24,13 +26,25 @@ class CreateBook extends Component {
         });
     }
 
+    addChapterToState = (e)=>{
+        e.preventDefault();
+
+         this.setState(
+            (prevState)=> ({
+                chapters: [...prevState.chapters, this.state.chapter]
+        }));
+
+        const chapterInp = document.getElementById('chapter');
+        chapterInp.value = "";
+    }
+
     addChapter = ()=>{
         if(this.state.addChapter === true){
             return(
                 <div>
                     <label>Name of chapter: </label>
-                    <input type="text"/>
-                    <button onClick={()=>this.setState((prevState)=> ({chapters: [...prevState.chapters,this.target.value]}))} className="waves-effect waves-light btn-small" >Add</button>
+                    <input id="chapter" onChange={(e)=>{this.setState({chapter: e.target.value})}} type="text"/>
+                    <button onClick={this.addChapterToState} className="waves-effect waves-light btn-small" >Add</button> 
                 </div>
             );
         }else {
@@ -47,7 +61,8 @@ class CreateBook extends Component {
             title: this.state.title,
             author: this.state.author,
             chapters: this.state.chapters,
-            summary: this.state.summary
+            summary: this.state.summary, 
+            language: this.state.language
         }
 
         this.props.createBook(newBook);
