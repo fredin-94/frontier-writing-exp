@@ -7,7 +7,11 @@ import {createBook} from '../../actions/bookActions';
 class CreateBook extends Component {
     
     state = {
-        addChapter : false
+        addChapter : false,
+        title: '',
+        author: '', //or authors??
+        chapters: [],
+        summary: ''
     }
 
     onClickAddChapter = (e)=>{
@@ -20,56 +24,82 @@ class CreateBook extends Component {
         });
     }
 
-    renderChapter = ()=>{
-        if(this.addChapter === true){
+    addChapter = ()=>{
+        if(this.state.addChapter === true){
             return(
                 <div>
                     <label>Name of chapter: </label>
                     <input type="text"/>
-                    <button>Add</button>
+                    <button onClick={()=>this.setState((prevState)=> ({chapters: [...prevState.chapters,this.target.value]}))} className="waves-effect waves-light btn-small" >Add</button>
                 </div>
             );
         }else {
-           // <button onClick={}>Add Chapter</button> /* should set add chapter to true */
+           return(
+            <button onClick={this.onClickAddChapter} className="waves-effect waves-light btn-small">Add Chapter</button> /* should set add chapter to true */
+           );
         }
     }
-
+    
     onClickCreateBook = (e)=>{
         e.preventDefault();
 
-        //this.props.createBook(newBook);
+        const newBook = {
+            title: this.state.title,
+            author: this.state.author,
+            chapters: this.state.chapters,
+            summary: this.state.summary
+        }
+
+        this.props.createBook(newBook);
 
         //show user page only if book saving was success
         this.props.history.push('/homepage');
     }
 
+    handleSummary = (e)=>{
+        this.setState({
+            summary: e.target.value //w.e is in the textarea at the moment
+        });
+    }
+
     render(){
+
+        const chapters = this.state.chapters.map((chapter, key)=>
+            <p>{chapter}</p>
+        );
+
         return(
-            <div>
+            
+            <div className="container">
                 <h5>Create a new book</h5>
 
                 <form>
                     <label>Title: </label>
-                    <input type="text"/>
+                    <input onChange={()=>this.setState({title: this.target.value})} type="text"/>
 
                     <label>Author: </label>
-                    <input type="text"/>
+                    <input onChange={()=>this.setState({author: this.target.value})} type="text"/>
 
-                    <label>Chapters: </label>
+                    <label>Summary: </label>
+                    <textarea onChange={this.handleSummary}/>        
                     
-                    {this.renderChapter()}
+                    <label>Chapters: </label>
+                    {chapters}
+                    {this.addChapter()}
                 
-                    <button onClick={this.onClickCreateBook}>Create book</button>
+                    <div className="center">
+                        <button className="waves-effect waves-light btn" onClick={this.onClickCreateBook}>Create book</button>
+                    </div>
                 </form>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state)=>({//may not need since we dont care abt the state anyway
+//const mapStateToProps = (state)=>({//may not need since we dont care abt the state anyway
     //books: state.books //to reach the book state via this.props.books instead
     //we wont need it tho i think, so maybe mstp can be null and we only use the 2nd param of conenct for maptodispatch
-});
+//});
 
 export default connect(null, {createBook})(CreateBook);
 

@@ -4,10 +4,10 @@ export const createBook = (bookData)=>(dispatch)=>{
 
 }
 
-export const getBook = (bookData)=>(dispatch)=>{
+export const getBook = ()=>(dispatch)=>{
 
 }
 
-export const getAllBooks = (bookData)=>(dispatch)=>{
+export const getAllBooks = ()=>(dispatch)=>{
 
 }

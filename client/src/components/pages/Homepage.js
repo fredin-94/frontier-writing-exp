@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 
-import {logoutUser} from '../../actions/authActions';
+//import {logoutUser} from '../../actions/authActions';
+
+import {getAllBooks} from '../../actions/bookActions';
+
 
 class Homepage extends Component {
 
     state = {
-        books : []
+        //books : []
     }
     
 /*     onLogoutClick = (e)=>{
@@ -23,8 +26,17 @@ class Homepage extends Component {
     }
 
     displayBooks = ()=>{
+        const {user} = this.props.auth;
+        
         //todo
         //get books that belong to the user and set them up so they can be displayed (maybe do this in a different compoent, displayBooks component)
+        if(this.props.getAllBooks(user.email)){ //if there exists any books
+            //loop to display all books of the user
+        }else{
+           return(
+            <p>You have 0 books available.</p>
+           );
+        }
     }
 
     onCreateBookClick = (e)=>{
@@ -45,9 +57,9 @@ class Homepage extends Component {
                         </button> */}
 
                         <div>
-                            <p>You have 0 books available.</p>
-                            <button>
-                                <Link to='/createBook'>Create a new book</Link>    
+                            {this.displayBooks()}
+                            <button className="waves-effect waves-light btn">
+                                <Link  style={{ color: '#FFF' }} to='/createBook'>Create a new book</Link>    
                             </button>
                         </div>
 
@@ -58,13 +70,14 @@ class Homepage extends Component {
     }
 }
 
-/* Homepage.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
+ Homepage.propTypes = {
+    //logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
-} */
-
+}  
+ 
 const mapStateToProps = (state)=>({
-    //auth: state.auth
+    auth: state.auth,
+    books: state.books //idk if correct
 });
-
-export default connect(mapStateToProps)(Homepage);
+ 
+export default connect(mapStateToProps, {getAllBooks})(Homepage);
