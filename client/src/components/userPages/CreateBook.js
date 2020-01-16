@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {createBook} from '../../actions/bookActions';
+import LanguageSelector from 'components/shared-layout/LanguageSelector';
 
 
 class CreateBook extends Component {
@@ -90,10 +91,10 @@ class CreateBook extends Component {
 
                 <form>
                     <label>Title: </label>
-                    <input onChange={()=>this.setState({title: this.target.value})} type="text"/>
+                    <input onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
 
                     <label>Author: </label>
-                    <input onChange={()=>this.setState({author: this.target.value})} type="text"/>
+                    <input onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
 
                     <label>Summary: </label>
                     <textarea onChange={this.handleSummary}/>        
@@ -101,7 +102,16 @@ class CreateBook extends Component {
                     <label>Chapters: </label>
                     {chapters}
                     {this.addChapter()}
-                
+
+                    <div>
+                        <label>What language is the book written in?</label>
+                        <LanguageSelector/>
+                        <select>
+                        <option value="Afrikanns">Afrikanns</option>
+                        <option value="Albanian">Albanian</option>
+                        </select>
+                    </div>
+                    
                     <div className="center">
                         <button className="waves-effect waves-light btn" onClick={this.onClickCreateBook}>Create book</button>
                     </div>
