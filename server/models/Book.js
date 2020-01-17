@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const ChapterSchema = require('./Chapter');
 
+mongoose.set('useFindAndModify', false);
 //schema
 const BookSchema = new Schema({
   title : {
@@ -33,10 +34,10 @@ const BookSchema = new Schema({
   pageCount:{ //i dont rly know how to get this but might add it later
       type: Number
   }, 
-  bookId:{
+  /* bookId:{ //can use built in mongodb one, just remember to send it back to user
       type: String,
       required: true
-  },
+  }, */
   language:{
     type: String,
     required: true

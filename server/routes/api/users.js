@@ -16,6 +16,16 @@ const validateUserLoginInput = require("../../validation/login.js");
 //models
 const User = require("../../models/User.js");
 
+router.get('/', (req,res,next)=>{
+  User.find((err, data)=>{
+    if(err){
+      return res.status(400).json("Error in request");
+    }
+
+    res.status(200).json(data);
+  });
+});
+
 //@ POST api/users/register
 router.post("/register", (req, res, next)=>{
   //check if valid input
