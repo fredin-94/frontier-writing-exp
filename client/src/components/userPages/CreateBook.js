@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {createBook} from '../../actions/bookActions';
-import LanguageSelector from 'components/shared-layout/LanguageSelector';
+//import LanguageSelector from 'components/shared-layout/LanguageSelector';
 
 
 class CreateBook extends Component {
@@ -55,7 +55,7 @@ class CreateBook extends Component {
         }
     }
     
-    onClickCreateBook = (e)=>{
+    handleCreateBook = (e)=>{
         e.preventDefault();
 
         const newBook = {
@@ -78,6 +78,26 @@ class CreateBook extends Component {
         });
     }
 
+
+    handleLangChange(e) {
+        this.setState({language: e.target.value});
+    }
+
+  /*   enableCreateBookBtn = ()=>{
+        if(this.state.title != "" || this.state.author != ""){
+            this.setState({
+                disabled: false
+            });
+        }else{
+            this.setState({
+                disabled: true
+            });
+        }
+    } */
+
+    componentDidUpdate(){
+    }
+
     render(){
 
         const chapters = this.state.chapters.map((chapter, key)=>
@@ -93,7 +113,7 @@ class CreateBook extends Component {
                     <label>Title: </label>
                     <input onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
 
-                    <label>Author: </label>
+                    <label>Author: </label> {/* set it to the username as default */}
                     <input onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
 
                     <label>Summary: </label>
@@ -104,16 +124,21 @@ class CreateBook extends Component {
                     {this.addChapter()}
 
                     <div>
-                        <label>What language is the book written in?</label>
-                        <LanguageSelector/>
-                        <select>
-                        <option value="Afrikanns">Afrikanns</option>
-                        <option value="Albanian">Albanian</option>
+                        <label>What language is the book written in?
+
+                        <select value={this.state.language} onChange={this.handleLangChange}>
+                            <option value='1'>pt1</option>
+                            <option value='2'>ipt2</option>
                         </select>
+
+                        </label>
+
+                        
+
                     </div>
                     
                     <div className="center">
-                        <button className="waves-effect waves-light btn" onClick={this.onClickCreateBook}>Create book</button>
+                        <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
                     </div>
                 </form>
             </div>

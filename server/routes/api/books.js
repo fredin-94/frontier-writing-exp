@@ -6,13 +6,22 @@ const Book = require("../../models/Book.js");
 //add a book
 router.post("/books", (req, res, next)=>{
 
+    //check if user data is valid? tho i can make sure on front end that they provide title, author etc before they submit
+
+    //idk if i should have this but these are like optional so idk what happens if i dont provide some values for them (should check w postman)
+    var collaborators = req.body.collaborators == null ? [] : req.body.collaborators;
+    var summary = req.body.collaborators == null ? 'No summary' : req.body.summary;
+    var language = req.body.collaborators == null ? 'No language specified' : req.body.language;
+    
     const newBook = new Book({
         title: req.body.title,
         authors: req.body.authors,
-        collaborators: req.body.collaborators,
-        summary: req.body.summary,
-        language: req.body.language
+        collaborators: collaborators,
+        summary: summary,
+        language: language
     });
+
+    res.status().json();
 
 });
 

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 //import {logoutUser} from '../../actions/authActions';
 
-import {getAllBooks} from '../../actions/bookActions';
+import {getAllBooksOfAUser} from '../../actions/bookActions';
 
 
 class Homepage extends Component {
@@ -30,7 +30,7 @@ class Homepage extends Component {
         
         //todo
         //get books that belong to the user and set them up so they can be displayed (maybe do this in a different compoent, displayBooks component)
-        if(this.props.getAllBooks(user.email)){ //if there exists any books
+        if(this.props.getAllBooksOfAUser(user.email)){ //if there exists any books, or use user._id instead??
             //loop to display all books of the user
         }else{
            return(
@@ -80,4 +80,4 @@ const mapStateToProps = (state)=>({
     books: state.books //idk if correct
 });
  
-export default connect(mapStateToProps, {getAllBooks})(Homepage);
+export default connect(mapStateToProps, {getAllBooksOfAUser})(Homepage);
