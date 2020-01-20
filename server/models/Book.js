@@ -41,6 +41,10 @@ const BookSchema = new Schema({
   language:{
     type: String,
     required: true
+  },
+  creator:{
+    type: String,
+    required: true
   }
 });
 

@@ -11,7 +11,8 @@ import {getAllBooksOfAUser} from '../../actions/bookActions';
 class Homepage extends Component {
 
     state = {
-        //books : []
+        books : [],
+        userHasBooks: false
     }
     
 /*     onLogoutClick = (e)=>{
@@ -30,7 +31,10 @@ class Homepage extends Component {
         
         //todo
         //get books that belong to the user and set them up so they can be displayed (maybe do this in a different compoent, displayBooks component)
-        if(this.props.getAllBooksOfAUser(user.email)){ //if there exists any books, or use user._id instead??
+        if(this.state.userHasBooks){ //if there exists any books, or use user._id instead??
+            return(
+                <h4>Current Books: </h4>
+            );
             //loop to display all books of the user
         }else{
            return(
@@ -41,6 +45,12 @@ class Homepage extends Component {
 
     onCreateBookClick = (e)=>{
         //go to endpoint where user can create a new book (set title, add a chapter, then choose to start writing that chapter or not)
+    }
+
+    componentDidMount(){
+        const {user} = this.props.auth;
+
+        this.props.getAllBooksOfAUser(user.id);
     }
 
     render(){

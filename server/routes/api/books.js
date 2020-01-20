@@ -35,7 +35,7 @@ router.post('/', (req, res, next)=>{
 //get all books (that belong to one user id, but then i think we can get that ID in the req, idk if thats RESTful tho or if i need to have it in the endpoint)
 router.get("/user/:userId", (req, res, next)=>{ //idk if this is the way to do it
     //find all books that have an author of userid, and all books that have a collaborator of userid
-    Book.find({$or:[{authors: req.params.userId },{collaborators: req.params.userId}]}, (err, data)=>{ //find where the user is the author but also all books where they r a collaborator?? then we need some kinda or 
+    Book.find({$or:[{creator: req.params.userId },{collaborators: req.params.userId}]}, (err, data)=>{ //find where the user is the author but also all books where they r a collaborator?? then we need some kinda or 
         if(err){
             return res.status(400).json("Error in request");
         }

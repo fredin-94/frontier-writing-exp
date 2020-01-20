@@ -9,4 +9,5 @@ export const CREATE_BOOK = "CREATE_BOOK";
 export const UPDATE_BOOK = "UPDATE_BOOK";
 export const GET_BOOK = "GET_BOOK";
 export const GET_ALL_USERS_BOOKS = "GET_ALL_USERS_BOOKS";
+export const ERROR = "ERROR";
 

@@ -14,7 +14,36 @@ class CreateBook extends Component {
         chapters: [],
         chapter: '',
         summary: '',
-        language: ''
+        language: '',
+        creator: ''
+    }
+
+    //CREATE BOOK:
+    handleCreateBook = (e)=>{
+        e.preventDefault();
+
+        let lang = '';
+        const authors = [this.state.author]
+
+        if(this.state.language === ''){
+            lang = 'English';
+        }
+
+        const newBook = {
+            title: this.state.title,
+            authors: authors,
+            chapters: this.state.chapters,
+            summary: this.state.summary, 
+            language: lang,
+            creator: this.state.creator
+        }
+
+        console.log(newBook);
+
+        this.props.createBook(newBook);
+
+        //show user page only if book saving was success
+        this.props.history.push('/homepage');
     }
 
     onClickAddChapter = (e)=>{
@@ -55,22 +84,7 @@ class CreateBook extends Component {
         }
     }
     
-    handleCreateBook = (e)=>{
-        e.preventDefault();
-
-        const newBook = {
-            title: this.state.title,
-            author: this.state.author,
-            chapters: this.state.chapters,
-            summary: this.state.summary, 
-            language: this.state.language
-        }
-
-        this.props.createBook(newBook);
-
-        //show user page only if book saving was success
-        this.props.history.push('/homepage');
-    }
+    
 
     handleSummary = (e)=>{
         this.setState({
@@ -95,13 +109,21 @@ class CreateBook extends Component {
         }
     } */
 
+
+    componentDidMount(){
+        this.setState({
+            author: this.props.auth.user.name,
+            creator: this.props.auth.user.id //Add to backend search
+        });
+    }
+
     componentDidUpdate(){
     }
 
     render(){
 
         const chapters = this.state.chapters.map((chapter, key)=>
-            <p>{chapter}</p>
+            <p key={chapter}>{chapter}</p>
         );
 
         return(
@@ -113,8 +135,8 @@ class CreateBook extends Component {
                     <label>Title: </label>
                     <input onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
 
-                    <label>Author: </label> {/* set it to the username as default */}
-                    <input onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
+                    <label>Author name: </label> {/* set it to the username as default */}
+                    <input value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
 
                     <label>Summary: </label>
                     <textarea onChange={this.handleSummary}/>        
@@ -146,12 +168,13 @@ class CreateBook extends Component {
     }
 }
 
-//const mapStateToProps = (state)=>({//may not need since we dont care abt the state anyway
+const mapStateToProps = (state)=>({//may not need since we dont care abt the state anyway
     //books: state.books //to reach the book state via this.props.books instead
     //we wont need it tho i think, so maybe mstp can be null and we only use the 2nd param of conenct for maptodispatch
-//});
+    auth: state.auth
+});
 
-export default connect(null, {createBook})(CreateBook);
+export default connect(mapStateToProps, {createBook})(CreateBook);
 
 //since this component doesnt care if anything is updated in the store (ithink) we can have mstp as null
 //we can have the mapdispatchtoprops but we dont need to, it just looks nicer in code

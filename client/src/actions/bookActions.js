@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS } from './types';
+import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR } from './types';
 
 export const createBook = (bookData)=>(dispatch)=>{
+    console.log("in createbook action");
     axios.post('/api/books', bookData)
     .then((res)=>{
+
+        console.log("success saved book");
 
         dispatch({
             type: CREATE_BOOK,
@@ -12,17 +15,12 @@ export const createBook = (bookData)=>(dispatch)=>{
 
     })
     .catch((err)=>{ //idk if i have err.res.data for this?
-        if(err.response === null){
-            dispatch({
-                type: GET_ERRORS,
-                payload: null
-            });
-        }else{
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            });
-        }
+        console.log(err);
+
+        dispatch({
+            type: ERROR,
+            error: err
+        });
     });
 }
 
@@ -36,20 +34,34 @@ export const getBook = (bookId)=>(dispatch)=>{
         });
     })
     .catch((err)=>{
+        console.log(err);
 
+        dispatch({
+            type: ERROR,
+            error: err
+        });
     });
 }
 
 export const getAllBooksOfAUser = (userId)=>(dispatch)=>{
-    axios.get(`/api/books/:${userId}`)
+    console.log("GET ALL BOOKS OF USER ACTION");
+    axios.get(`/api/books/user/${userId}`)
     .then((res)=>{
+
+        console.log("GOT USERS BOOKS AXIOS");
+
         dispatch({
             type: GET_ALL_USERS_BOOKS,
             payload: res.data
         });
     })
     .catch((err)=>{
+        console.log("THERE WAS AN ERROR");
 
+        dispatch({
+            type: ERROR,
+            error: err
+        });
     });
 
 }
