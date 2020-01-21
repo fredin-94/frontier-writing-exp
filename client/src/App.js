@@ -12,7 +12,7 @@ import './App.css';
 import setAuthToken from './utils/setAuthToken'; //
 import {setCurrentUser, logoutUser} from './actions/authActions'; //
 import PrivateRoutes from './components/private-routes/PrivateRoutes';
-import Homepage from './components/pages/Homepage';
+import Homepage from './components/userPages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
