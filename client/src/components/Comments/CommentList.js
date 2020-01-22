@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-class CommentList extends React.Component{//classbased component
+class CommentList extends React.Component{
     
     renderComments(){
         return this.props.comments.map((comment)=>{
@@ -17,7 +17,7 @@ class CommentList extends React.Component{//classbased component
         return(
             <div>
                 <ul>
-                    <h5> {this.props.comments.length} Comments:</h5>
+                    <p> {this.props.comments.length} Comments </p>
                     {this.renderComments()}
                 </ul>
             </div>

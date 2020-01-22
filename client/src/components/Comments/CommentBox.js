@@ -15,8 +15,8 @@ class CommentBox extends React.Component {
         });
     }
 
-    componentDidMount(){ //move to other component? probably
-        this.props.getComments();
+    componentDidMount(){ 
+        //this.props.getComments();
     }
 
     handleSubmit = (e)=>{
@@ -34,7 +34,7 @@ class CommentBox extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <h4>Leave a comment:</h4>
+                    <h5>Leave a comment:</h5>
                     <textarea onChange={this.handleChange} value={this.state.comment} />
                     <div>
                         <button>Submit comment</button>
