@@ -19,7 +19,8 @@ const BookSchema = new Schema({
     type: [String]
   },
   chapters : {
-    type: [ChapterSchema]
+    //type: [ChapterSchema]
+    type: [String]
   },
   lastEdited: {
     type: Date,
@@ -34,13 +35,9 @@ const BookSchema = new Schema({
   pageCount:{ //i dont rly know how to get this but might add it later
       type: Number
   }, 
-  /* bookId:{ //can use built in mongodb one, just remember to send it back to user
-      type: String,
-      required: true
-  }, */
   language:{
-    type: String,
-    required: true
+    type: String
+    //required: true
   },
   creator:{
     type: String,

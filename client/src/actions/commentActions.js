@@ -10,12 +10,11 @@ export function saveComment (comment) {
     };
 }
 
-export function getComments(){//placeholder data for now
+export function getComments(){ //placeholder data for now
     const response = axios.get('http://jsonplaceholder.typicode.com/comments');
 
     return {
         type: GET_COMMENTS,
         payload: response
     }
-
 }

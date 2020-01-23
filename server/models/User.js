@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   dateOfBecomingMember: { //dont think i need, but lets keep for now
     type: Date,
-    default: Date.now //maybe remove?? or will it work??
+    default: Date.now //maybe remove?? or will it work?? change later
   },
   profileImg:{
     type: String

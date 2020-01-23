@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 import {logoutUser} from '../../actions/authActions';
 
-
 class Navbar extends React.Component{ //choose which to show for logged in /out users
   
   state = {
@@ -29,15 +28,20 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
           </li>
 
           <li>
-            <Link to="/mypage" className=" "> 
+            <Link to="/homepage" className=" "> 
                     My Page
             </Link>
           </li>
 
           <li>
-            <Link to="/signout" className="black-text">
-                  Sign out
-            </Link>
+            <button className="btn-flat waves-effect waves-teal" onClick={(e)=>{ 
+              e.preventDefault();
+              this.props.logoutUser(); }}>
+              <Link to="/" className="black-text">
+                    Sign out
+              </Link>
+            </button>
+          
           </li>
         </ul>
       );
@@ -69,20 +73,13 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
   render(){
     return(
       <div className="center">
-        <div className="navbar-fixed">
+        <div className="navbar">
           <nav className="z-depth-0">
             <div className="nav-wrapper teal">
             
             <div className="container">
               {this.renderLinks()}
             </div>
-
-            {/* <ul className="sidenav" id="mobile-demo">
-              <li> <Link to="/about" className="col s5 black-text">
-                  About
-              </Link> </li>
-              {this.renderLinks()}
-            </ul> */}
 
             </div>
           </nav>
@@ -98,4 +95,4 @@ const mapStateToProps = (state)=>({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, {logoutUser})(Navbar);

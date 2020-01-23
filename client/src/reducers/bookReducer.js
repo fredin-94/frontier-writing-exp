@@ -12,14 +12,19 @@ export default function(state = initialState, action){
             ...state,
             selectedBook: action.payload
         }
-    }else if(action.type === GET_ALL_USERS_BOOKS){
+    }
+    else if(action.type === GET_ALL_USERS_BOOKS){
         return {
             ...state,
             userBooks: action.payload
         }
     }
-    //else if (action.type === CREATE_BOOK){
-    //}
+    else if (action.type === CREATE_BOOK){
+        return {
+            ...state,
+            userBooks: [...state.userBooks, action.payload] 
+        }
+    } 
     else if(action.type === ERROR){
         return{
             ...state,

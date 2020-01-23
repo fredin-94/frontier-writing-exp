@@ -11,10 +11,10 @@ export const createBook = (bookData)=>(dispatch)=>{
         dispatch({
             type: CREATE_BOOK,
             payload: res.data
-        }); //maybe dont need?
+        });
 
     })
-    .catch((err)=>{ //idk if i have err.res.data for this?
+    .catch((err)=>{ //fix later
         console.log(err);
 
         dispatch({

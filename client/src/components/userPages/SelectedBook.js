@@ -13,7 +13,7 @@ export default (book) => { //probably need to make it a classcomponent
     //TODO: fix function to display all chapters on the side
 
     return(
-        <div>
+        <div className="container">
             <div><h4>{book.title}</h4></div>
             <div className="row">
                 <div className="col s2">

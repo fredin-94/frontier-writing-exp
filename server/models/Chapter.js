@@ -12,8 +12,10 @@ const ChapterSchema = new Schema({
     type: String,
   },
   contributors : {
-      type: [String] //string array type data
+    type: [String]
   }
 });
 
 module.exports = ChapterSchema; //?? to make other schema use it
+//module.exports = Chapter = mongoose.model('chapters', ChapterSchema);
+

@@ -3,4 +3,4 @@ module.exports = {
   secretOrKey: "secret"
 };
 
-//change secret to something else? then add this file to gitignore so that its never committed since the secret string should be secret??f
+//change secret to something else? then add this file to gitignore so that its never committed since the secret string should be secret 

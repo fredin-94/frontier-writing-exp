@@ -22,22 +22,23 @@ class CreateBook extends Component {
     handleCreateBook = (e)=>{
         e.preventDefault();
 
-        let lang = '';
+        /* let lang = '';
         const authors = [this.state.author]
 
         if(this.state.language === ''){
             lang = 'English';
-        }
+        } */
 
         const newBook = {
             title: this.state.title,
-            authors: authors,
+            authors: this.state.author,
             chapters: this.state.chapters,
             summary: this.state.summary, 
-            language: lang,
+            language: this.state.language,
             creator: this.state.creator
         }
 
+        console.log("Current book:");
         console.log(newBook);
 
         this.props.createBook(newBook);
@@ -59,10 +60,18 @@ class CreateBook extends Component {
     addChapterToState = (e)=>{
         e.preventDefault();
 
-         this.setState(
-            (prevState)=> ({
-                chapters: [...prevState.chapters, this.state.chapter]
-        }));
+        if(this.state.chapter !== ""){
+            this.setState(
+                (prevState)=> ({
+                    chapters: [...prevState.chapters, this.state.chapter]
+            }));
+
+            this.setState({
+                chapter: ''
+            });
+        }
+
+       
 
         const chapterInp = document.getElementById('chapter');
         chapterInp.value = "";
@@ -97,19 +106,6 @@ class CreateBook extends Component {
         this.setState({language: e.target.value});
     }
 
-  /*   enableCreateBookBtn = ()=>{
-        if(this.state.title != "" || this.state.author != ""){
-            this.setState({
-                disabled: false
-            });
-        }else{
-            this.setState({
-                disabled: true
-            });
-        }
-    } */
-
-
     componentDidMount(){
         this.setState({
             author: this.props.auth.user.name,
@@ -132,20 +128,20 @@ class CreateBook extends Component {
                 <h5>Create a new book</h5>
 
                 <form>
-                    <label>Title: </label>
-                    <input onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
+                    <label htmlFor="title">Title: </label>
+                    <input id="title" onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
+                    <br/>
+                    <label htmlFor="author">Author name: </label> 
+                    <input id="title" value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
 
-                    <label>Author name: </label> {/* set it to the username as default */}
-                    <input value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
-
-                    <label>Summary: </label>
-                    <textarea onChange={this.handleSummary}/>        
+                    <label htmlFor="summary">Summary: </label>
+                    <textarea id="summary" onChange={this.handleSummary}/>        
                     
                     <label>Chapters: </label>
                     {chapters}
                     {this.addChapter()}
 
-                    <div>
+                   {/*  <div>
                         <label>What language is the book written in?
 
                         <select value={this.state.language} onChange={this.handleLangChange}>
@@ -157,7 +153,7 @@ class CreateBook extends Component {
 
                         
 
-                    </div>
+                    </div> */}
                     
                     <div className="center">
                         <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Book = require("../../models/Book.js");
+const Chapter = require("../../models/Chapter.js");
 
 //add a book
 router.post('/', (req, res, next)=>{
@@ -9,22 +10,42 @@ router.post('/', (req, res, next)=>{
     //check if user data is valid? tho i can make sure on front end that they provide title, author etc before they submit
 
     //idk if i should have this but these are like optional so idk what happens if i dont provide some values for them (should check w postman)
-    var collaborators = req.body.collaborators == null ? [] : req.body.collaborators;
+   /*  var collaborators = req.body.collaborators == null ? [] : req.body.collaborators;
     var summary = req.body.collaborators == null ? 'No summary' : req.body.summary;
-    var language = req.body.collaborators == null ? 'No language specified' : req.body.language;
+    var language = req.body.collaborators == null ? 'No language specified' : req.body.language; */
     
+    console.log(req.body);
+
+    let authors = [];
+    authors.push(req.body.authors);
+
+    let chapterTitles = req.body.chapters;
+
+  /*   let chapters = [];
+
+    chapterTitles.forEach(title => {
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        let chapter = new Chapter({
+            title: title
+        });
+        chapters.push(chapter);
+    });  */
+
     const newBook = new Book({
         title: req.body.title,
-        authors: req.body.authors,
-        collaborators: collaborators,
-        summary: summary,
-        language: language
+        authors: authors,
+        chapters: chapterTitles,
+        summary: req.body.summary,
+        language: req.body.language,
+        creator: req.body.creator
     });
 
     newBook.save((err, book)=>{
         if(err){
             return res.status(400).json(err);
         }
+        console.log(">>>>>>>>>>>>>>>> SAVED BOOK");
+        console.log(book);
         return res.status(201).json(book);
     });
 
@@ -35,7 +56,9 @@ router.post('/', (req, res, next)=>{
 //get all books (that belong to one user id, but then i think we can get that ID in the req, idk if thats RESTful tho or if i need to have it in the endpoint)
 router.get("/user/:userId", (req, res, next)=>{ //idk if this is the way to do it
     //find all books that have an author of userid, and all books that have a collaborator of userid
-    Book.find({$or:[{creator: req.params.userId },{collaborators: req.params.userId}]}, (err, data)=>{ //find where the user is the author but also all books where they r a collaborator?? then we need some kinda or 
+    const id = req.params.userId;
+    
+    Book.find({$or:[{creator: id },{collaborators: id}]}, (err, data)=>{ //find where the user is the author but also all books where they r a collaborator?? then we need some kinda or 
         if(err){
             return res.status(400).json("Error in request");
         }

@@ -21,7 +21,7 @@ const app = express();
 app.use(morgan('combined')); //middleware to log requests to console (for debugging)
 //app.use(cors()); //accept requests from anywhere (change it later to only accept requests from our website, or remove this cors )
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true  //to allow nested objects 
 }));
 app.use(bodyParser.json()); //parse any request as json
 
@@ -33,7 +33,7 @@ mongoose.connect(
 .then(()=> console.log("Connected to mongoDB!"))
 .catch((err)=> console.log(err));
 
-//passport setup
+//passport setup as middleware
 app.use(passport.initialize());
 require("./config/passport.js")(passport);
 

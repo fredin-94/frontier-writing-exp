@@ -16,7 +16,7 @@ const validateUserLoginInput = require("../../validation/login.js");
 //models
 const User = require("../../models/User.js");
 
-router.get('/', (req,res,next)=>{
+router.get('/', (req,res,next)=>{ //get all users
   User.find((err, data)=>{
     if(err){
       return res.status(400).json("Error in request");
@@ -83,7 +83,7 @@ router.post("/login", (req,res, next)=>{
     return res.status(400).json(errors); //400 = bad request
   }
 
-  if(req.headers.authorization){ //if it has a jwt token? maybe big A?
+  if(req.headers.authorization){ //(for redis) if it has a jwt token? maybe big A?
     //return getAuthTokenId(req,res);
   }else{ //if not then create the token, set the token in the db and return the session give user a token and maybe id? 324
 
@@ -98,7 +98,7 @@ router.post("/login", (req,res, next)=>{
       return res.status(400).json({emailnotfound: "Email Not Found"});
     }
 
-    bcrypt.compare(password, user.password)
+    bcrypt.compare(password, user.password) //do the encrypter pws match
     .then((isMatch)=>{
       if(isMatch){
         const payload = {
@@ -106,7 +106,7 @@ router.post("/login", (req,res, next)=>{
           name: user.name
         };
 
-        jwt.sign(payload, keys.secretOrKey, {expiresIn: 31556926}, (err, token)=>{
+        jwt.sign(payload, keys.secretOrKey, {expiresIn: 31556926}, (err, token)=>{ //set up the token, send it back to client
           res.json({
             success: true,
             token: "Bearer " + token

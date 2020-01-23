@@ -48,7 +48,7 @@ export const loginUser = (userData)=>(dispatch)=>{
 
         localStorage.setItem('jwtToken', token); //store token in browser memory so that user doesnt get logged out everytime they go to a new page
         setAuthToken(token);
-        const decoded = jwt_decode(token);
+        const decoded = jwt_decode(token); //decode so that we can get user data from the token
         dispatch(setCurrentUser(decoded));
 
         console.log('in loginuder action, res bracket for axioz');
@@ -73,7 +73,7 @@ export const loginUser = (userData)=>(dispatch)=>{
 export const logoutUser = ()=>(dispatch)=>{
     localStorage.removeItem('jwtToken');
     setAuthToken(false);
-    dispatch(setCurrentUser({})); //will set authenticated to false
+    dispatch(setCurrentUser({})); //will set authenticated to false 
 };
 
 export const setCurrentUser = (decoded)=>{

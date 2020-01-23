@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 
-//import {logoutUser} from '../../actions/authActions';
-
 import {getAllBooksOfAUser} from '../../actions/bookActions';
 
 
@@ -14,10 +12,6 @@ class Homepage extends Component {
         books : [],
     }
     
-/*     onLogoutClick = (e)=>{
-        e.preventDefault();
-        this.props.logoutUser();
-    }; */
 
     renderAllUserBooks = ()=>{
         const userBooks = this.props.books.userBooks;
@@ -25,24 +19,32 @@ class Homepage extends Component {
         console.log(this.props.books.userBooks);
 
         const style = {
-            maxHeight: '100px',
-            maxWidth: 'auto'
+            maxHeight: 'auto',
+            maxWidth: '150px'
         }
 
          const displayingBooks = userBooks.map((book)=>
-            <div key={book._id}>
-                <div><img style={style} alt="Book image" src="https://images-na.ssl-images-amazon.com/images/I/61-uFOBDLDL.jpg"/></div>
-                <p><Link to="/SelectedBook">Title: {book.title}</Link></p>
-                <p>Summary: {book.summary}</p>
-                <p>Author: {book.author}</p>
-                <p>Language: {book.language}</p>
+            <div className="col s12 m4" key={book._id}>
+                <div className="card">
+                    <div className="card-image">
+                        <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
+                    </div>
+                    <div className="card-content">
+                        <h6 className="small-title">Title: <Link to="/SelectedBook">{book.title}</Link></h6>
+                        <hr/>
+                        <p className="small-title">Summary: </p> {book.summary}
+                        <p className="small-title">Author name: </p> {book.authors}
+                        <p className="small-title">Language: </p> {book.language}
+                    </div>
+                </div>
+                
             </div>
         ); 
 
         const amountOfBooks = userBooks.length;
 
         return(
-            <div>
+            <div className="row">
                 <p>{amountOfBooks} Books:</p>
                 {displayingBooks}
             </div>
@@ -83,13 +85,12 @@ class Homepage extends Component {
 }
 
  Homepage.propTypes = {
-    //logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 }  
  
 const mapStateToProps = (state)=>({
     auth: state.auth,
-    books: state.books //idk if correct
+    books: state.books 
 });
  
 export default connect(mapStateToProps, {getAllBooksOfAUser})(Homepage);
