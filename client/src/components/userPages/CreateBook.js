@@ -138,8 +138,11 @@ class CreateBook extends Component {
                     <textarea id="summary" onChange={this.handleSummary}/>        
                     
                     <label>Chapters: </label>
-                    {chapters}
-                    {this.addChapter()}
+                    <div>
+                        {chapters}
+                        {this.addChapter()}
+                    </div>
+                   
 
                    {/*  <div>
                         <label>What language is the book written in?

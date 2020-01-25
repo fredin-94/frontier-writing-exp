@@ -30,7 +30,7 @@ class Homepage extends Component {
                         <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
                     </div>
                     <div className="card-content">
-                        <h6 className="small-title">Title: <Link to="/SelectedBook">{book.title}</Link></h6>
+                        <h6 className="small-title">Title: <Link className="title-link" to="/SelectedBook">{book.title}</Link></h6>
                         <hr/>
                         <p className="small-title">Summary: </p> {book.summary}
                         <p className="small-title">Author name: </p> {book.authors}

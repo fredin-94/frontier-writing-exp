@@ -119,7 +119,7 @@ class Login extends React.Component {
                             <div>
                                 <button
                                     type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                    className="btn btn-large waves-effect hoverable teal"
                                 >
                                     Log in 
                                 </button>

@@ -21,51 +21,56 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
 
     if(this.props.auth.isAuthenticated){
       return(
-        <ul>
-          <li> <Link to="/about" className="">
-              About
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/homepage" className=" "> 
-                    My Page
-            </Link>
-          </li>
-
-          <li>
-            <button className="btn-flat waves-effect waves-teal" onClick={(e)=>{ 
-              e.preventDefault();
-              this.props.logoutUser(); }}>
-              <Link to="/" className="black-text">
-                    Sign out
+        <div>
+          <ul>
+            <li>
+              <Link to="/homepage" className=" "> 
+                      MY PAGE
               </Link>
-            </button>
-          
-          </li>
-        </ul>
+            </li>
+          </ul>
+          <ul className="right">
+            <li> <Link to="/about" className="">
+                ABOUT
+              </Link>
+            </li>
+            <li>
+              <button className="btn-flat waves-effect waves-teal" onClick={(e)=>{ 
+                e.preventDefault();
+                this.props.logoutUser(); }}>
+                <Link to="/" className="black-text">
+                      SIGN OUT
+                </Link>
+              </button>
+            
+            </li>
+          </ul>
+        </div>
       );
      
     } else{
         return(
-          <ul>
-            <li> <Link to="/about" className="">
-                About
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/login" className=" "> 
-                      Log in
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/register" className=" ">
-                    Register
-              </Link>
-            </li>
-          </ul>
+          <div>
+            <ul>
+              <li>
+                <Link to="/login" className=" "> 
+                        LOG IN
+                </Link>
+              </li>
+              <li>
+                <Link to="/register" className=" ">
+                      REGISTER
+                </Link>
+              </li>
+            </ul>
+            <ul className="right">
+              <li> <Link to="/about" className="">
+                  ABOUT
+                </Link>
+              </li>
+            </ul>
+          </div>
+        
         );
     }
   }

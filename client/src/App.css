@@ -1,3 +1,22 @@
 .small-title {
     font-weight: bold;
 }
+
+.title-big{
+    color: black;
+}
+
+.title-link{ /* for a elements that should look like text, but with hover color */
+    color: black;
+}
+.title-link:hover{
+    color: teal;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn-container{
+    margin-bottom: 5%;
+}
