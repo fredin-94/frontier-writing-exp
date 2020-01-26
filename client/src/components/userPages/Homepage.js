@@ -23,18 +23,30 @@ class Homepage extends Component {
             maxWidth: '150px'
         }
 
+
+
          const displayingBooks = userBooks.map((book)=>
             <div className="col s12 m4" key={book._id}>
-                <div className="card">
+                <div className="card grey lighten-5">
                     <div className="card-image">
                         <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
                     </div>
                     <div className="card-content">
-                        <h6 className="small-title">Title: <Link className="title-link" to="/SelectedBook">{book.title}</Link></h6>
+                        <span className="card-title"><Link className="title-link" to={`/selectedBook/${book._id}`}>{book.title}</Link></span>
                         <hr/>
-                        <p className="small-title">Summary: </p> {book.summary}
-                        <p className="small-title">Author name: </p> {book.authors}
-                        <p className="small-title">Language: </p> {book.language}
+                       {/*  <p className="small-title">SUMMARY: </p> */} <p className="c-text">{book.summary}</p>
+                       {/*  <p className="small-title">AUTHOR NAME: </p> <p className="c-text">{book.authors}</p>
+                        <p className="small-title">LANGUAGE: </p> <p className="c-text">{book.language}</p> */}
+                        <hr/>
+                           
+                            <div>
+                                <div className="author-div">
+                                    <p className="c-text">{book.authors}</p>
+                                </div>
+                                <div className="lang-div">
+                                    <p className="c-text">{book.language}</p>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 

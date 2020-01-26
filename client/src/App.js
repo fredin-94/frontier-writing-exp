@@ -14,6 +14,7 @@ import {setCurrentUser, logoutUser} from './actions/authActions'; //
 import PrivateRoutes from './components/private-routes/PrivateRoutes';
 import Homepage from './components/userPages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';
+import EditBook from './components/userPages/EditBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
 import CreateBook from 'components/userPages/CreateBook';
@@ -59,7 +60,8 @@ class App extends Component {
             <Route exact path="/login" component = {Login}/>
             <Suspense fallback = {<div>Loading...</div>}>
               <Switch>
-                <PrivateRoutes exact path="/selectedBook" component = {SelectedBook}/>
+                <PrivateRoutes exact path="/selectedBook/:bookId" component = {SelectedBook}/>
+                <PrivateRoutes exact path="/editBook/:bookId" component = {EditBook}/>
                 <PrivateRoutes exact path="/mypage" component = {LazyMyPage}/>
                 <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
                 <PrivateRoutes exact path="/createBook" component = {CreateBook}/>

@@ -1,9 +1,24 @@
 .small-title {
-    font-weight: bold;
+    text-align: left;
+}
+.c-text{
+    text-align: left;
+    color: gray;
+}
+.author-div{
+    float:left;
+    margin-right: 5%;
+}
+.lang-div{
+    overflow:hidden;
+}
+.lang-div p {
+    text-align: right;
 }
 
 .title-big{
     color: black;
+
 }
 
 .title-link{ /* for a elements that should look like text, but with hover color */
@@ -12,11 +27,33 @@
 .title-link:hover{
     color: teal;
 }
+p{
+    color: black;
+
+}
+
+
+
+hr{
+    color: white;
+}
 
 body{
     font-family: 'Raleway', sans-serif;
+    color: black;
+}
+
+h1 h2 h3 h4 h5 h6{
+    color: black;
+     
 }
 
 .btn-container{
     margin-bottom: 5%;
+}
+
+@media (min-width: 768px){ /*fix this later so they r one below the other*/
+    .author-div{
+        margin-bottom: 5%;
+    }
 }

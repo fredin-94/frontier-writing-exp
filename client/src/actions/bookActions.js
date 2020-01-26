@@ -26,8 +26,9 @@ export const createBook = (bookData)=>(dispatch)=>{
 
 export const getBook = (bookId)=>(dispatch)=>{
     //i guess i have to change this cuz it will go to same endpoint as the one for user id
-    axios.get(`/api/books/:${bookId}`)
+    axios.get(`/api/books/${bookId}`)
     .then((res)=>{
+        console.log("action got 1 book");
         dispatch({
             type: GET_BOOK,
             payload: res.data
