@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR } from './types';
+import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR, DELETE_BOOK } from './types';
 
 export const createBook = (bookData)=>(dispatch)=>{
     console.log("in createbook action");
@@ -31,6 +31,26 @@ export const getBook = (bookId)=>(dispatch)=>{
         console.log("action got 1 book");
         dispatch({
             type: GET_BOOK,
+            payload: res.data
+        });
+    })
+    .catch((err)=>{
+        console.log(err);
+
+        dispatch({
+            type: ERROR,
+            error: err
+        });
+    });
+}
+
+export const deleteBook = (bookId)=>(dispatch)=>{
+    //i guess i have to change this cuz it will go to same endpoint as the one for user id
+    axios.delete(`/api/books/${bookId}`)
+    .then((res)=>{
+        console.log("action deleted book");
+        dispatch({
+            type: DELETE_BOOK,
             payload: res.data
         });
     })

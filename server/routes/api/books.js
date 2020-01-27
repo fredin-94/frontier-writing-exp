@@ -86,6 +86,25 @@ router.get("/:id", (req, res, next)=>{
     })
 });
 
+//Route delete 1 book
+router.delete("/:id", (req, res, next)=>{
+    
+    const bookId = req.params.id;
+
+    Book.findByIdAndDelete(bookId, (err, data)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json("Error in request");
+        }
+        if(data!==null){
+            console.log("successful delete req");
+            console.log(data);
+            return res.status(200).json(data);
+        }
+        return res.status(400); //change?
+    });
+}); 
+
 //update the book if any fields have changed, on only the changed fields
 router.patch("/:id", (req, res, next)=>{
 
