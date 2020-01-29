@@ -42,6 +42,9 @@ const BookSchema = new Schema({
   creator:{
     type: String,
     required: true
+  },
+  genre:{
+    type: [String]
   }
 });
 

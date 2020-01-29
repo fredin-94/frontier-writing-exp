@@ -31,7 +31,9 @@ class LandingPage extends React.Component{
                 <div className="row">
                     <div className="col s12 center-align">
                        
-                        <h4>Welcome</h4>
+                        <h4>Welcome to FWE!</h4>
+                        <h6 style={{color:"teal"}}>Online writing community deluxe</h6>
+                        <hr/>
                         <p>New member? Sign up! Already a member? Sign in!</p>
                         
                         <div className="btn-container col s12 m6">
