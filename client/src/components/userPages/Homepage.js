@@ -27,7 +27,7 @@ class Homepage extends Component {
 
          const displayingBooks = userBooks.map((book)=>
             <div className="col s12 m4 l3" key={book._id}>
-                <div className="card grey lighten-5">
+                <div className="card-size card grey lighten-5">
                     <div className="card-image">
                         <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
                     </div>
@@ -37,14 +37,14 @@ class Homepage extends Component {
                         <p className="c-text">{book.summary}</p>
                         <hr/>
                            
-                            <div>
-                                <div className="author-div">
-                                    <p className="c-text">{book.authors}</p>
-                                </div>
-                                <div className="lang-div">
-                                    <p className="c-text">{book.language}</p>
-                                </div>
+                        <div>
+                            <div className="author-div">
+                                <p className="c-text">{book.authors}</p>
                             </div>
+                            <div className="lang-div">
+                                <p className="c-text">{book.language}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 

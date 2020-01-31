@@ -32,7 +32,11 @@ p{
 
 }
 
-
+.card-size{
+    height: 400px;
+    width: auto;
+    overflow: hidden;
+}
 
 hr{
     color: white;
