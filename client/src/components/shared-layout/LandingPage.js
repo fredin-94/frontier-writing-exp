@@ -19,7 +19,7 @@ class LandingPage extends React.Component{
     componentDidMount(){
         if(this.props.isAuthenticated){ //if user is logged in they should not see this page
 
-            this.history.push('/homepage'); //make this work
+            this.history.push('/homepage');
 
         }
 
