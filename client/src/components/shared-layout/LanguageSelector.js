@@ -1,85 +1,86 @@
 import React from 'react';
+import Select from 'react-select';
 
-const LanguageSelector = ()=>{
+const LanguageSelector = ()=> {
+
+
+    const options = [
+        { value: "Afrikanns", label: 'Afrikanns'},
+        { value: "Albanian", label: 'Albanian'},
+        { value: "Arabic", label: 'Arabic'},
+        { value: "Armenian", label: 'Armenian'},
+        { value: "Basque", label: 'Basque'},
+        { value: "Bengali", label: 'Bengali'},
+        { value: "Bulgarian", label: 'Bulgarian'},
+        { value: "Catalan", label: 'Catalan'},
+        { value: "Cambodian", label: 'Cambodian'},
+        { value: "Chinese (Mandarin)", label: 'Chinese (Mandarin)'},
+        { value: "Croation", label: 'Croation'},
+        { value: "Czech", label: 'Czech'},
+        { value: "Danish", label: 'Danish'},
+        { value: "Dutch", label: 'Dutch'},
+        { value: "English", label: 'English'},
+        { value: "Estonian", label: 'Estonian'},
+        { value: "Fiji", label: 'Fiji'},
+        { value: "Finnish", label: 'Finnish'},
+        { value: "French", label: 'French'},
+        { value: "Georgian", label: 'Georgian'},
+        { value: "German", label: 'German'},
+        { value: "Greek", label: 'Greek'},
+        { value: "Gujarati", label: 'Gujarati'},
+        { value: "Hebrew", label: 'Hebrew'},
+        { value: "Hindi", label: 'Hindi'},
+        { value: "Hungarian", label: 'Hungarian'},
+        { value: "Icelandic", label: 'Icelandic'},
+        { value: "Indonesian", label: 'Indonesian'},
+        { value: "Irish", label: 'Irish'},
+        { value: "Italian", label: 'Italian'},
+        { value: "Japanese", label: 'Japanese'},
+        { value: "Javanese", label: 'Javanese'},
+        { value: "Korean", label: 'Korean'},
+        { value: "Latin", label: 'Latin'},
+        { value: "Latvian", label: 'Latvian'},
+        { value: "Lithuanian", label: 'Lithuanian'},
+        { value: "Macedonian", label: 'Macedonian'},
+        { value: "Malay", label: 'Malay'},
+        { value: "Malayalam", label: 'Malayalam'},
+        { value: "Maltese", label: 'Maltese'},
+        { value: "Maori", label: 'Maori'},
+        { value: "Marathi", label: 'Marathi'},
+        { value: "Mongolian", label: 'Mongolian'},
+        { value: "Nepali", label: 'Nepali'},
+        { value: "Norwegian", label: 'Norwegian'},
+        { value: "Persian", label: 'Persian'},
+        { value: "Polish", label: 'Polish'},
+        { value: "Portuguese", label: 'Portuguese'},
+        { value: "Punjabi", label: 'Punjabi'},
+        { value: "Quechua", label: 'Quechua'},
+        { value: "Romanian", label: 'Romanian'},
+        { value: "Russian", label: 'Russian'},
+        { value: "Samoan", label: 'Samoan'},
+        { value: "Serbian", label: 'Serbian'},
+        { value: "Slovak", label: 'Slovak'},
+        { value: "Slovenian", label: 'Slovenian'},
+        { value: "Spanish", label: 'Spanish'},
+        { value: "Swahili", label: 'Swahili'},
+        { value: "Swedish ", label: 'Swedish' },
+        { value: "Tamil", label: 'Tamil'},
+        { value: "Tatar", label: 'Tatar'},
+        { value: "Telugu", label: 'Telugu'},
+        { value: "Thai", label: 'Thai'},
+        { value: "Tibetan", label: 'Tibetan'},
+        { value: "Tonga", label: 'Tonga'},
+        { value: "Turkish", label: 'Turkish'},
+        { value: "Ukranian", label: 'Ukranian'},
+        { value: "Urdu", label: 'Urdu'},
+        { value: "Uzbek", label: 'Uzbek'},
+        { value: "Vietnamese", label: 'Vietnamese'},
+        { value: "Welsh", label: 'Welsh'},
+        { value: "Xhosa", label: 'Xhosa'}
+    ]
 
     return(
-        <div>
-            <select data-placeholder="Choose a Language...">
-                <option value="Afrikanns">Afrikanns</option>
-                <option value="Albanian">Albanian</option>
-                <option value="Arabic">Arabic</option>
-                <option value="Armenian">Armenian</option>
-                <option value="Basque">Basque</option>
-                <option value="Bengali">Bengali</option>
-                <option value="Bulgarian">Bulgarian</option>
-                <option value="Catalan">Catalan</option>
-                <option value="Cambodian">Cambodian</option>
-                <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
-                <option value="Croation">Croation</option>
-                <option value="Czech">Czech</option>
-                <option value="Danish">Danish</option>
-                <option value="Dutch">Dutch</option>
-                <option value="English">English</option>
-                <option value="Estonian">Estonian</option>
-                <option value="Fiji">Fiji</option>
-                <option value="Finnish">Finnish</option>
-                <option value="French">French</option>
-                <option value="Georgian">Georgian</option>
-                <option value="German">German</option>
-                <option value="Greek">Greek</option>
-                <option value="Gujarati">Gujarati</option>
-                <option value="Hebrew">Hebrew</option>
-                <option value="Hindi">Hindi</option>
-                <option value="Hungarian">Hungarian</option>
-                <option value="Icelandic">Icelandic</option>
-                <option value="Indonesian">Indonesian</option>
-                <option value="Irish">Irish</option>
-                <option value="Italian">Italian</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Javanese">Javanese</option>
-                <option value="Korean">Korean</option>
-                <option value="Latin">Latin</option>
-                <option value="Latvian">Latvian</option>
-                <option value="Lithuanian">Lithuanian</option>
-                <option value="Macedonian">Macedonian</option>
-                <option value="Malay">Malay</option>
-                <option value="Malayalam">Malayalam</option>
-                <option value="Maltese">Maltese</option>
-                <option value="Maori">Maori</option>
-                <option value="Marathi">Marathi</option>
-                <option value="Mongolian">Mongolian</option>
-                <option value="Nepali">Nepali</option>
-                <option value="Norwegian">Norwegian</option>
-                <option value="Persian">Persian</option>
-                <option value="Polish">Polish</option>
-                <option value="Portuguese">Portuguese</option>
-                <option value="Punjabi">Punjabi</option>
-                <option value="Quechua">Quechua</option>
-                <option value="Romanian">Romanian</option>
-                <option value="Russian">Russian</option>
-                <option value="Samoan">Samoan</option>
-                <option value="Serbian">Serbian</option>
-                <option value="Slovak">Slovak</option>
-                <option value="Slovenian">Slovenian</option>
-                <option value="Spanish">Spanish</option>
-                <option value="Swahili">Swahili</option>
-                <option value="Swedish ">Swedish </option>
-                <option value="Tamil">Tamil</option>
-                <option value="Tatar">Tatar</option>
-                <option value="Telugu">Telugu</option>
-                <option value="Thai">Thai</option>
-                <option value="Tibetan">Tibetan</option>
-                <option value="Tonga">Tonga</option>
-                <option value="Turkish">Turkish</option>
-                <option value="Ukranian">Ukranian</option>
-                <option value="Urdu">Urdu</option>
-                <option value="Uzbek">Uzbek</option>
-                <option value="Vietnamese">Vietnamese</option>
-                <option value="Welsh">Welsh</option>
-                <option value="Xhosa">Xhosa</option>
-            </select>
-        </div>
-    
+        <Select options={options}/> 
     ); 
 }
 

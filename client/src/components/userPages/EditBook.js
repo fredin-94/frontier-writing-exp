@@ -26,6 +26,8 @@ class EditBook extends React.Component{
                     <label>Collaborators: </label>
                     
                     <label>Image source: </label>
+                    
+                    <label>Genre: </label>
 
 
                     

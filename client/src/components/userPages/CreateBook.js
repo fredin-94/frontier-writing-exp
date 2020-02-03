@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {createBook} from '../../actions/bookActions';
-//import LanguageSelector from 'components/shared-layout/LanguageSelector';
+import LanguageSelector from 'components/shared-layout/LanguageSelector';
 
 
 class CreateBook extends Component {
@@ -144,19 +144,12 @@ class CreateBook extends Component {
                     </div>
                    
 
-                   {/*  <div>
-                        <label>What language is the book written in?
-
-                        <select value={this.state.language} onChange={this.handleLangChange}>
-                            <option value='1'>pt1</option>
-                            <option value='2'>ipt2</option>
-                        </select>
-
-                        </label>
-
+                     <div>
+                        <label>What language is the book written in?</label>
+                        {LanguageSelector()}
                         
 
-                    </div> */}
+                    </div>
                     
                     <div className="center">
                         <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
