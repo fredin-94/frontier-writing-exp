@@ -1,6 +1,13 @@
 import React from 'react';
+import {updateBook} from '../../actions/bookActions'
+import {getBookIdFromUrl} from '../../utils/utils';
+import {connect} from 'react-redux';
 
 class EditBook extends React.Component{
+
+    componentDidMount(){
+
+    }
 
     render(){
         return(
@@ -39,7 +46,10 @@ class EditBook extends React.Component{
             </div>
         );
     }
-
 }
 
-export default EditBook;
+const mapStateToProps = (state)=>({
+    book: state.books //change
+});
+
+export default connect(mapStateToProps, {updateBook})(EditBook);

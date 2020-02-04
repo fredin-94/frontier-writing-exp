@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR, DELETE_BOOK } from './types';
+import { CREATE_BOOK, GET_ERRORS, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR,UPDATE_BOOK, DELETE_BOOK } from './types';
 
 export const createBook = (bookData)=>(dispatch)=>{
     console.log("in createbook action");
@@ -55,6 +55,24 @@ export const deleteBook = (bookId)=>(dispatch)=>{
     .catch((err)=>{
         console.log(err);
 
+        dispatch({
+            type: ERROR,
+            error: err
+        });
+    });
+}
+
+export const updateBook = (bookId)=>(dispatch)=>{
+    axios.patch(`/api/books/${bookId}`) //decide if i should use patch or put, (backend is patch atm)
+    .then((res)=>{
+        console.log("action updated book");
+        dispatch({
+            type: UPDATE_BOOK,
+            payload: res.data
+        });
+    })
+    .catch((err)=>{
+        console.log(err);
         dispatch({
             type: ERROR,
             error: err

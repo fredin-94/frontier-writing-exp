@@ -10,7 +10,7 @@ import {getBook, deleteBook} from '../../actions/bookActions';
 
 class SelectedBook extends React.Component{
     
-    getBookIdFromUrl(){
+    getBookIdFromUrl(){ //change to get this from utils instead
         var url = window.location.href;  //get the whole url
         var bookId = url.substr(url.lastIndexOf('/') + 1);
         return bookId;
@@ -19,7 +19,6 @@ class SelectedBook extends React.Component{
 
     handleEditBookBtn = (e)=>{
         const bookId = this.getBookIdFromUrl();
-        
         
         this.props.history.push(`/editBook/${bookId}`);
     }
