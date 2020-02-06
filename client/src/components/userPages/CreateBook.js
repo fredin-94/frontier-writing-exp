@@ -146,7 +146,7 @@ class CreateBook extends Component {
 
                      <div>
                         <label>What language is the book written in?</label>
-                        {LanguageSelector()}
+                        <LanguageSelector/>
                         
 
                     </div>

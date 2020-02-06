@@ -18,13 +18,6 @@ class Homepage extends Component {
         
         console.log(this.props.books.userBooks);
 
-        const style = {
-            maxHeight: 'auto',
-            maxWidth: '150px'
-        }
-
-
-
          const displayingBooks = userBooks.map((book)=>
             <div className="col s12 m4 l3" key={book._id}>
                 <div className="card-size card grey lighten-5">
@@ -77,7 +70,7 @@ class Homepage extends Component {
                 <div className="row">
                     <div className="col s12 center-align">
                         <h4>Welcome {user.name}</h4>
-                        
+                       
                         <section className="book-section">
                             {this.renderAllUserBooks()}
                         </section>

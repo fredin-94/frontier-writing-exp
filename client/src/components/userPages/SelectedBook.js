@@ -45,11 +45,6 @@ class SelectedBook extends React.Component{
 
     render(){
 
-        const style = {
-            maxHeight: '100px',
-            maxWidth: 'auto'
-        }
-
         const book = this.props.books.selectedBook; //probly wrong
         console.log("WANT BOOK HERE: >>>>>>");
         console.log(book);

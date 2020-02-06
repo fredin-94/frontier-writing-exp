@@ -2,7 +2,7 @@ import {GET_ALL_USERS_BOOKS, CREATE_BOOK, GET_BOOK, UPDATE_BOOK, ERROR} from '..
 
 const initialState = {
     userBooks: [],
-    selectedBook: {} //idk if needed
+    selectedBook: {}, //idk if needed
 }
 
 export default function(state = initialState, action){

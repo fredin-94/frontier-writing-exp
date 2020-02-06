@@ -1,6 +1,6 @@
 import React from 'react';
 import {updateBook} from '../../actions/bookActions'
-import {getBookIdFromUrl} from '../../utils/utils';
+//import {getBookIdFromUrl} from '../../utils/utils';
 import {connect} from 'react-redux';
 
 class EditBook extends React.Component{
