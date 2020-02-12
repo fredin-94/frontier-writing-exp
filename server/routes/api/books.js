@@ -7,13 +7,6 @@ const Chapter = require("../../models/Chapter.js");
 //add a book
 router.post('/', (req, res, next)=>{
 
-    //check if user data is valid? tho i can make sure on front end that they provide title, author etc before they submit
-
-    //idk if i should have this but these are like optional so idk what happens if i dont provide some values for them (should check w postman)
-   /*  var collaborators = req.body.collaborators == null ? [] : req.body.collaborators;
-    var summary = req.body.collaborators == null ? 'No summary' : req.body.summary;
-    var language = req.body.collaborators == null ? 'No language specified' : req.body.language; */
-    
     console.log(req.body);
 
     let authors = [];
@@ -21,20 +14,24 @@ router.post('/', (req, res, next)=>{
 
     let chapterTitles = req.body.chapters;
 
-  /*   let chapters = [];
+    console.log("CH TITLES: " + chapterTitles);
 
-    chapterTitles.forEach(title => {
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    let chapters = [];
+
+    chapterTitles.map(title => {
+        console.log(">>>>>>>>>>>>>>>> making chapters >>>>>>>>>>>>>>>>>>>>>>");
         let chapter = new Chapter({
             title: title
         });
         chapters.push(chapter);
-    });  */
+    }); 
+
+    chapters.forEach((chap)=>console.log("CHAPTERS: "+chap));
 
     const newBook = new Book({
         title: req.body.title,
         authors: authors,
-        chapters: chapterTitles,
+        chapters: chapters,
         summary: req.body.summary,
         language: req.body.language,
         creator: req.body.creator
@@ -48,9 +45,6 @@ router.post('/', (req, res, next)=>{
         console.log(book);
         return res.status(201).json(book);
     });
-
-    
-
 });
 
 //get all books (that belong to one user id, but then i think we can get that ID in the req, idk if thats RESTful tho or if i need to have it in the endpoint)

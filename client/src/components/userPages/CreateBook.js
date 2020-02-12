@@ -22,13 +22,6 @@ class CreateBook extends Component {
     handleCreateBook = (e)=>{
         e.preventDefault();
 
-        /* let lang = '';
-        const authors = [this.state.author]
-
-        if(this.state.language === ''){
-            lang = 'English';
-        } */
-
         const newBook = {
             title: this.state.title,
             authors: this.state.author,
@@ -106,6 +99,12 @@ class CreateBook extends Component {
         this.setState({language: e.target.value});
     }
 
+    setLanguage = (language)=>{
+        this.setState({
+            language:language
+        });
+    }
+
     componentDidMount(){
         this.setState({
             author: this.props.auth.user.name,
@@ -146,13 +145,13 @@ class CreateBook extends Component {
 
                      <div>
                         <label>What language is the book written in?</label>
-                        <LanguageSelector/>
+                        <LanguageSelector setLanguage={this.setLanguage} />
                         
 
                     </div>
                     
                     <div className="center">
-                        <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
+                        <button disabled={!this.state.author || !this.state.title || !this.state.language} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
                     </div>
                 </form>
             </div>

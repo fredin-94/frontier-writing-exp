@@ -81,7 +81,7 @@ class LanguageSelector extends React.Component {
 
     handleChange = (e)=>{
         let selectedLanguage = e.target.value;
-        console.log(selectedLanguage);
+        this.props.setLanguage(selectedLanguage);
     }
 
     componentDidMount(){

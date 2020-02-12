@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ChapterSchema = require('./Chapter');
+const ChapterSchema = require('./Chapter').schema;
 
 mongoose.set('useFindAndModify', false);
 //schema
@@ -19,8 +19,7 @@ const BookSchema = new Schema({
     type: [String]
   },
   chapters : {
-    //type: [ChapterSchema]
-    type: [String]
+    type: [{type: Schema.Types.ObjectId, ref:'Chapter'}]
   },
   lastEdited: {
     type: Date,

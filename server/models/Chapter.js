@@ -16,6 +16,5 @@ const ChapterSchema = new Schema({
   }
 });
 
-module.exports = ChapterSchema; //?? to make other schema use it
-//module.exports = Chapter = mongoose.model('chapters', ChapterSchema);
-
+//module.exports = ChapterSchema; //?? to make other schema use it
+module.exports = Chapter = mongoose.model('Chapter', ChapterSchema);
