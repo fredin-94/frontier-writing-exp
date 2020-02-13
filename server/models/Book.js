@@ -19,7 +19,12 @@ const BookSchema = new Schema({
     type: [String]
   },
   chapters : {
-    type: [{type: Schema.Types.ObjectId, ref:'Chapter'}]
+    //type: [{type: Schema.Types.ObjectId, ref:'Chapter'}]
+    type: [{
+      title: String,
+      content: String,
+      collaborators: String
+    }]
   },
   lastEdited: {
     type: Date,

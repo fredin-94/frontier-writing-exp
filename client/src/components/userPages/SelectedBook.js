@@ -38,6 +38,26 @@ class SelectedBook extends React.Component{
 
     }
 
+    renderChapters = ()=>{
+        const chapters = this.props.books.selectedBook.chapters; 
+        const book = this.props.books.selectedBook; 
+
+
+        if(book !== undefined && chapters!== undefined){
+
+        console.log(chapters);
+
+            return chapters.map((chapter)=>
+                <a key={chapter.title}>chapter.title</a>
+            );
+        }
+        else{
+            console.log("IN ELSE");
+            return <p>couldnt map chaps</p>
+        }
+        
+    }
+
     componentDidMount(){
         const bookId = this.getBookIdFromUrl();
         this.props.getBook(bookId);
@@ -45,9 +65,7 @@ class SelectedBook extends React.Component{
 
     render(){
 
-        const book = this.props.books.selectedBook; //probly wrong
-        console.log("WANT BOOK HERE: >>>>>>");
-        console.log(book);
+        const book = this.props.books.selectedBook; 
 
         return(
             <div className="container">
@@ -60,6 +78,7 @@ class SelectedBook extends React.Component{
                     <div className="col s2">
                         <p>Chapters: </p>
                         <p>*show all chapters here*</p>
+                        {this.renderChapters()}
                     </div>
                     <div className="col s10">
                         <JoditEditor/>

@@ -18,11 +18,18 @@ router.post('/', (req, res, next)=>{
 
     let chapters = [];
 
-    chapterTitles.map(title => {
-        console.log(">>>>>>>>>>>>>>>> making chapters >>>>>>>>>>>>>>>>>>>>>>");
+    chapterTitles.forEach(title => {
+        /* console.log(">>>>>>>>>>>>>>>> making chapters >>>>>>>>>>>>>>>>>>>>>>");
         let chapter = new Chapter({
-            title: title
-        });
+            title: title,
+            content: '',
+            contributors:[]
+        }); */
+        let chapter = {
+            title: title,
+            content: '',
+            collaborators: []
+        }
         chapters.push(chapter);
     }); 
 
