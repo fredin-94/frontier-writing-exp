@@ -1,3 +1,18 @@
+body{
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    padding-bottom: 5%;
+}
+
+hr{
+    color: white;
+}
+
+h1 h2 h3 h4 h5 h6{
+    color: black;
+     
+}
+
 .small-title {
     text-align: left;
 }
@@ -38,19 +53,7 @@ p{
     overflow: hidden;
 }
 
-hr{
-    color: white;
-}
 
-body{
-    font-family: 'Raleway', sans-serif;
-    color: black;
-}
-
-h1 h2 h3 h4 h5 h6{
-    color: black;
-     
-}
 
 .btn-container{
     margin-bottom: 5%;

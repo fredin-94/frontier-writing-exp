@@ -126,31 +126,39 @@ class CreateBook extends Component {
             <div className="container">
                 <h5>Create a new book</h5>
 
-                <form>
-                    <label htmlFor="title">Title: </label>
-                    <input id="title" onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
-                    <br/>
-                    <label htmlFor="author">Author name: </label> 
-                    <input id="title" value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
+                <form className="col s12">
+                    <div className="row">
+                        <label htmlFor="title">Title: </label>
+                        <input id="title" onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
+                    </div>
+                   
 
-                    <label htmlFor="summary">Summary: </label>
-                    <textarea id="summary" onChange={this.handleSummary}/>        
+                    <div className="row">
+                        <label htmlFor="author">Author name: </label> 
+                        <input id="title" value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
+                    </div>
+                  
+
+                    <div className="row">
+                        <label htmlFor="summary">Summary: </label>
+                        <textarea id="summary" onChange={this.handleSummary}/>   
+                    </div>
+                        
                     
-                    <label>Chapters: </label>
-                    <div>
+                    <div className="row">
+                        <label>Chapters: </label>
                         {chapters}
+                        <br/>
                         {this.addChapter()}
                     </div>
                    
 
-                     <div>
+                     <div className="row">
                         <label>What language is the book written in?</label>
                         <LanguageSelector setLanguage={this.setLanguage} />
-                        
-
                     </div>
                     
-                    <div className="center">
+                    <div className="row center">
                         <button disabled={!this.state.author || !this.state.title || !this.state.language} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
                     </div>
                 </form>
