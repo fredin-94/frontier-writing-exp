@@ -59,6 +59,12 @@ p{
     margin-bottom: 5%;
 }
 
+.cb-container{
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 50%;
+}
+
 @media (min-width: 768px){ /*fix this later so they r one below the other*/
     .author-div{
         margin-bottom: 5%;

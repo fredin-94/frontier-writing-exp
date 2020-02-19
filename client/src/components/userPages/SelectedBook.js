@@ -69,7 +69,7 @@ class SelectedBook extends React.Component{
 
         return(
             <div className="container">
-                <div>
+                <div className="row center-align">
                    <h4>{book.title}</h4>
                     <button onClick={this.handleEditBookBtn} className="btn btn-small teal waves-effect">Edit Book</button>
                     <button onClick={this.handleDeleteBookBtn} className="btn btn-small red waves-effect">Delete Book</button>
@@ -83,10 +83,14 @@ class SelectedBook extends React.Component{
                     <div className="col s10">
                         <JoditEditor/>
                     </div>
-                    <div className="col s12">
+                </div>
+                <div className="row">
+                    <div className="col s2"></div>
+                    <div className="col s8 center-align">
                         <CommentBox/>
                         <CommentList/>
                     </div>
+                    <div className="col s2"></div>
                 </div>
                
             </div>

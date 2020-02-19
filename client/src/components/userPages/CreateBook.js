@@ -123,8 +123,11 @@ class CreateBook extends Component {
 
         return(
             
-            <div className="container">
-                <h5>Create a new book</h5>
+            <div className="cb-container">
+                <div className="center-align">
+                    <h5>Create a new book</h5>
+                    <p>All fields can be edited later</p>
+                </div>
 
                 <form className="col s12">
                     <div className="row">
