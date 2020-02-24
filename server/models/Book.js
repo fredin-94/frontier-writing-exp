@@ -23,7 +23,7 @@ const BookSchema = new Schema({
     type: [{
       title: String,
       content: String,
-      collaborators: String
+      collaborators: [String]
     }]
   },
   lastEdited: {

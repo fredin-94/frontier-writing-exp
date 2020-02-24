@@ -2,29 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 const Book = require("../../models/Book.js");
-const Chapter = require("../../models/Chapter.js");
 
 //add a book
 router.post('/', (req, res, next)=>{
-
-    console.log(req.body);
-
     let authors = [];
     authors.push(req.body.authors);
 
     let chapterTitles = req.body.chapters;
 
-    console.log("CH TITLES: " + chapterTitles);
-
     let chapters = [];
 
     chapterTitles.forEach(title => {
-        /* console.log(">>>>>>>>>>>>>>>> making chapters >>>>>>>>>>>>>>>>>>>>>>");
-        let chapter = new Chapter({
-            title: title,
-            content: '',
-            contributors:[]
-        }); */
         let chapter = {
             title: title,
             content: '',
@@ -32,8 +20,6 @@ router.post('/', (req, res, next)=>{
         }
         chapters.push(chapter);
     }); 
-
-    chapters.forEach((chap)=>console.log("CHAPTERS: "+chap));
 
     const newBook = new Book({
         title: req.body.title,
