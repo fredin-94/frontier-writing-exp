@@ -2,8 +2,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ChapterSchema = require('./Chapter').schema;
-
 mongoose.set('useFindAndModify', false);
 //schema
 const BookSchema = new Schema({
@@ -19,7 +17,6 @@ const BookSchema = new Schema({
     type: [String]
   },
   chapters : {
-    //type: [{type: Schema.Types.ObjectId, ref:'Chapter'}]
     type: [{
       title: String,
       content: String,

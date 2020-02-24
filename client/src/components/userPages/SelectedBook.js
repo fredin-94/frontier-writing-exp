@@ -2,14 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CommentBox from '../comments/CommentBox';
 import CommentList from '../comments/CommentList';
+import {Link} from "react-router-dom";
 
-import JoditEditor from '../joditEditorHook/JoditEditor';
+//import JoditEditor from '../joditEditorHook/JoditEditor'; //if i remove remember to remove from json n rebuild
 
 import {getBook, deleteBook} from '../../actions/bookActions';
 
 
 class SelectedBook extends React.Component{
     
+    state = {
+        selectedChapter : ''
+    }
+
     getBookIdFromUrl(){ //change to get this from utils instead
         var url = window.location.href;  //get the whole url
         var bookId = url.substr(url.lastIndexOf('/') + 1);
@@ -38,24 +43,29 @@ class SelectedBook extends React.Component{
 
     }
 
+    handleSelectChapter = (e)=>{
+        e.preventDefault();
+        console.log(e.target.value);
+        this.setState({
+            selectedChapter: e.target.value //check this
+        });
+    }
+
+    //if there is a chapter selected, its contents should be displayed in the text editor 
+    //so im thinking, have this site only to show backside text, edit delete etc, and only show text editor on another page after the chapter has been selected
+
     renderChapters = ()=>{
         const chapters = this.props.books.selectedBook.chapters; 
         const book = this.props.books.selectedBook; 
-
-
         if(book !== undefined && chapters!== undefined){
-
-        console.log(chapters);
-
-            return chapters.map((chapter)=>
-                <a key={chapter.title}>chapter.title</a>
+            const chaptersDisplayed = chapters.map((chapter)=>
+                <div><Link to="/writeBook" className="chapterList" key={chapter.title} onClick={this.handleSelectChapter}>{chapter.title}</Link></div>
             );
+            return chaptersDisplayed;
         }
         else{
-            console.log("IN ELSE");
-            return <p>couldnt map chaps</p>
+            return <p>Couldn't display chapters</p>
         }
-        
     }
 
     componentDidMount(){
@@ -64,25 +74,26 @@ class SelectedBook extends React.Component{
     }
 
     render(){
-
         const book = this.props.books.selectedBook; 
-
         return(
             <div className="container">
                 <div className="row center-align">
                    <h4>{book.title}</h4>
-                    <button onClick={this.handleEditBookBtn} className="btn btn-small teal waves-effect">Edit Book</button>
-                    <button onClick={this.handleDeleteBookBtn} className="btn btn-small red waves-effect">Delete Book</button>
+                    <button style={{marginRight:'5px'}} onClick={this.handleEditBookBtn} className="btn btn-small teal waves-effect">Edit</button>
+                    <button onClick={this.handleDeleteBookBtn} className="btn btn-small red waves-effect">Delete</button>
                 </div>
                 <div className="row">
-                    <div className="col s2">
-                        <p>Chapters: </p>
-                        <p>*show all chapters here*</p>
+                    <div className="col s6">
+                        <h6>Chapters: </h6>
                         {this.renderChapters()}
                     </div>
-                    <div className="col s10">
-                        <JoditEditor/>
+                    <div  className="col s6">
+                        <h6>Summary: </h6>
+                        {book.summary}
                     </div>
+                   {/*  <div className="col s10">
+                        <JoditEditor/>
+                    </div> */}
                 </div>
                 <div className="row">
                     <div className="col s2"></div>

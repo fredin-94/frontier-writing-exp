@@ -47,6 +47,13 @@ p{
 
 }
 
+.chapterList{
+    color:black;
+}
+.chapterList:hover{
+    color:teal;
+}
+
 .card-size{
     height: 400px;
     width: auto;
