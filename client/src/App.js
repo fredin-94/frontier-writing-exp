@@ -18,6 +18,7 @@ import EditBook from './components/userPages/EditBook';
 
 import Root from 'Root'; //idk if all will work if i have 2 stores...
 import CreateBook from 'components/userPages/CreateBook';
+import WriteBook from 'components/userPages/WriteBook';
 //import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
@@ -62,6 +63,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoutes exact path="/selectedBook/:bookId" component = {SelectedBook}/>
                 <PrivateRoutes exact path="/editBook/:bookId" component = {EditBook}/>
+                <PrivateRoutes exact path="/writeBook/:bookId/:chapterId" component = {WriteBook}/>
                 <PrivateRoutes exact path="/mypage" component = {LazyMyPage}/>
                 <PrivateRoutes exact path = '/homepage' component = {Homepage}/>
                 <PrivateRoutes exact path="/createBook" component = {CreateBook}/>

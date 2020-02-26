@@ -37,7 +37,7 @@ class CommentBox extends React.Component {
                     <h5>Leave a comment:</h5>
                     <textarea onChange={this.handleChange} value={this.state.comment} />
                     <div>
-                        <button>Submit comment</button>
+                        <button className="btn teal waves-effect">Submit comment</button>
                     </div>
                 </form>
             </div>

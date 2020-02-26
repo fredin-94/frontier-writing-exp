@@ -72,6 +72,13 @@ p{
     width: 50%;
 }
 
+/*quill: */
+.ql-editor{
+    min-height:500px;
+}
+
+
+
 @media (min-width: 768px){ /*fix this later so they r one below the other*/
     .author-div{
         margin-bottom: 5%;

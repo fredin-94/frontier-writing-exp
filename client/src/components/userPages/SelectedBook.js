@@ -57,9 +57,10 @@ class SelectedBook extends React.Component{
     renderChapters = ()=>{
         const chapters = this.props.books.selectedBook.chapters; 
         const book = this.props.books.selectedBook; 
+        const bookId = this.getBookIdFromUrl();
         if(book !== undefined && chapters!== undefined){
             const chaptersDisplayed = chapters.map((chapter)=>
-                <div><Link to="/writeBook" className="chapterList" key={chapter.title} onClick={this.handleSelectChapter}>{chapter.title}</Link></div>
+                <div key={chapter.title}><Link to={`/writeBook/${bookId}/${chapter._id}`} className="chapterList">{chapter.title}</Link></div>
             );
             return chaptersDisplayed;
         }
@@ -96,12 +97,12 @@ class SelectedBook extends React.Component{
                     </div> */}
                 </div>
                 <div className="row">
-                    <div className="col s2"></div>
-                    <div className="col s8 center-align">
+                    <div className="col s3"></div>
+                    <div className="col s6 center-align">
                         <CommentBox/>
                         <CommentList/>
                     </div>
-                    <div className="col s2"></div>
+                    <div className="col s3"></div>
                 </div>
                
             </div>
