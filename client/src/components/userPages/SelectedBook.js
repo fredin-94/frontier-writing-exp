@@ -62,7 +62,7 @@ class SelectedBook extends React.Component{
         const bookId = this.getBookIdFromUrl();
         if(book !== undefined && chapters!== undefined){
             const chaptersDisplayed = chapters.map((chapter)=>
-                <div key={chapter.title}><Link to={`/writeBook/${bookId}/${chapter._id}`} className="chapterList">{chapter.title}</Link></div>
+                <div key={chapter._id}><Link to={`/writeBook/${bookId}/${chapter._id}`} className="chapterList">{chapter.title}</Link></div>
             );
             return chaptersDisplayed;
         }
@@ -108,7 +108,7 @@ class SelectedBook extends React.Component{
     }
 
     componentDidMount(){
-        const bookId = this.getBookIdFromUrl();
+        const bookId = this.getBookIdFromUrl(); 
         this.props.getBook(bookId);
         //this.renderBookContent(this.state.currentChapter);
     }

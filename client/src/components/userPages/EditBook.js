@@ -1,5 +1,5 @@
 import React from 'react';
-import {updateBook} from '../../actions/bookActions'
+import {updateBook} from '../../actions/bookActions';
 //import {getBookIdFromUrl} from '../../utils/utils';
 import {connect} from 'react-redux';
 
@@ -39,7 +39,7 @@ class EditBook extends React.Component{
 
                     
                     <div className="center">
-                        <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Edit book</button>
+                        <button disabled={!this.state.author || !this.state.title} className="waves-effect waves-light btn" onClick={this.handleEditBook}>Edit book</button>
                     </div>
                 </form>
 

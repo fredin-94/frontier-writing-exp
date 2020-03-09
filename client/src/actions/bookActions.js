@@ -62,10 +62,28 @@ export const deleteBook = (bookId)=>(dispatch)=>{
     });
 }
 
-export const updateBook = (bookId)=>(dispatch)=>{
-    axios.patch(`/api/books/${bookId}`) //decide if i should use patch or put, (backend is patch atm)
+export const updateBook = (bookId, data)=>(dispatch)=>{
+    axios.patch(`/api/books/${bookId}`, data) //decide if i should use patch or put, (backend is patch atm)
     .then((res)=>{
         console.log("action updated book");
+        dispatch({
+            type: UPDATE_BOOK,
+            payload: res.data
+        });
+    })
+    .catch((err)=>{
+        console.log(err);
+        dispatch({
+            type: ERROR,
+            error: err
+        });
+    });
+}
+
+export const updateChapter = (bookId, chapterId, data)=>(dispatch)=>{
+    axios.patch(`/api/books/${bookId}/${chapterId}`, data) //decide if i should use patch or put, (backend is patch atm)
+    .then((res)=>{
+        console.log("action updated book chapter");
         dispatch({
             type: UPDATE_BOOK,
             payload: res.data

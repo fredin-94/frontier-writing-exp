@@ -109,6 +109,16 @@ router.patch("/:id", (req, res, next)=>{
 
 });
 
+router.patch("/:id/:chapterId", (req, res, next)=>{
+
+    const bookId = req.params.id;
+    const chapterId = req.params.chapterId;
+    const bookParamsToUpdate = req.body;
+
+    //find right chapter n update its content
+
+});
+
 
 module.exports = router;
 
