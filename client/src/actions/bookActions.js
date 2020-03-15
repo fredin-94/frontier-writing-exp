@@ -80,6 +80,7 @@ export const updateBook = (bookId, data)=>(dispatch)=>{
     });
 }
 
+//maybe remove later and just use the update book method.
 export const updateChapter = (bookId, chapterId, data)=>(dispatch)=>{
     axios.patch(`/api/books/${bookId}/${chapterId}`, data) //decide if i should use patch or put, (backend is patch atm)
     .then((res)=>{

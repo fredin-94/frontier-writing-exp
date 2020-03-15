@@ -70,7 +70,7 @@ router.get("/:id", (req, res, next)=>{
         console.log(data);
         return res.status(200).json(data);
 
-    })
+    });
 });
 
 //Route delete 1 book
@@ -95,7 +95,7 @@ router.delete("/:id", (req, res, next)=>{
 //update the book if any fields have changed, on only the changed fields
 router.patch("/:id", (req, res, next)=>{
 
-    const bookId = req.params.id;
+ /*    const bookId = req.params.id;
     const bookParamsToUpdate = req.body;
 
     Book.findByIdAndUpdate( {_id: bookId} , bookParamsToUpdate, (err, data)=>{
@@ -105,15 +105,101 @@ router.patch("/:id", (req, res, next)=>{
         }
 
         return res.status(204).json(data);
+    }); */
+
+
+    
+    const bookId = req.params.id;
+    const chapterId = req.body.chapterId;
+
+    Book.findById(bookId, (err, data)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json("Error in request");
+            
+        }
+        for(let i = 0; i < data.chapters.length; i++){
+            if(data.chapters[i]._id === chapterId){
+                if(req.body.content !== null){
+                    data.chapters[i].content = req.body.content;
+                }
+                else{
+                    data.chapters[i].content = data.chapters[i].content;
+                }
+                if(req.body.title !== null){
+                    data.chapters[i].title = req.body.title;
+                }else{
+                    data.chapters[i].title = data.chapters[i].title;
+                }
+                break;
+            }
+        }
+           
+        return res.status(204).json(data);
+
     });
+    
 
 });
 
+//get a chapter
+router.get('/:id/:chapterId', (req, res, next)=>{
+    const bookId = req.params.id;
+    const chapterId = req.params.chapterId;
+    
+    Book.findById(bookId, (err, data)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json("Error in request");
+        }
+        //=== doesnt work for for this, but w.e
+        let chapter = data.chapters.find(chap => chap._id == chapterId);
+        return res.status(200).json(chapter);
+    });
+});
+
+//update a chapter
 router.patch("/:id/:chapterId", (req, res, next)=>{
+
+    console.log(req.body.content);
+    console.log(">>>>>>>>>>>PATCH >>>>>>>>>>>");
 
     const bookId = req.params.id;
     const chapterId = req.params.chapterId;
-    const bookParamsToUpdate = req.body;
+
+    Book.findById(bookId, (err, book)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).json("Error in request");
+        }
+    
+        let chps = book.chapters;
+        for(let i = 0; i < chps.length; i++){
+
+            if(chps[i]._id == chapterId){
+                console.log(chps[i]);
+
+                if(req.body.content !== null){
+                    chps[i].content = req.body.content;
+                }else{
+                    chps[i].content = chps[i].content;
+                }
+                if(req.body.title !== null && req.body.title !== ""){
+                    chps[i].title = req.body.title;
+                }else{
+                    chps[i].title = chps[i].title;
+                }
+                break;
+            }
+        } 
+
+        book.save((err, book)=>{
+            if(err){
+                return res.status(400).json(err);
+            }
+            return res.status(204).json(book);
+        });
+    });
 
     //find right chapter n update its content
 
