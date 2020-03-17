@@ -14,6 +14,21 @@ class Quill extends React.Component{
 
     }
 
+    componentDidMount(){
+
+        console.log(this.props.text);
+
+        this.setState({
+            editorHtml: this.props.text
+        });
+    }
+
+    componentDidUpdate(){
+        if(this.props.text !== this.state.editorHtml){
+            this.props.updateText(this.state.editorHtml);
+        }
+    }
+
     //TODO: implement word counter
     render(){
         return(

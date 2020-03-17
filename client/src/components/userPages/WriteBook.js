@@ -32,16 +32,16 @@ class WriteBook extends React.Component{
 
         let chapters = this.props.books.selectedBook.chapters;
         let chapter = chapters.find(chap => chap._id == chapterId);
-        
+
         this.setState({
             text: chapter.content,
             chapterName: chapter.title
         });
     }
 
-    handleChange = (value)=>{
+    updateText = (text)=>{
         this.setState({ 
-            text: value 
+            text: text 
         });
     }
 
@@ -49,7 +49,7 @@ class WriteBook extends React.Component{
         return(
             <div className="container">
                 <h4>{this.state.chapterName}</h4>
-                <Quill value={this.state.text} onChange={this.handleChange}/>
+                <Quill text={this.state.text} updateText={this.updateText}/>
             </div>
         );
     }
