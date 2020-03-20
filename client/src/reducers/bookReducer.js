@@ -1,8 +1,9 @@
-import {GET_ALL_USERS_BOOKS, CREATE_BOOK, GET_BOOK, UPDATE_BOOK, ERROR} from '../actions/types';
+import {GET_ALL_USERS_BOOKS, CREATE_BOOK, GET_BOOK, UPDATE_BOOK, ERROR, SET_CHAPTER} from '../actions/types';
 
 const initialState = {
     userBooks: [],
     selectedBook: {}, //idk if needed
+    selectedChapter: {}
 }
 
 export default function(state = initialState, action){
@@ -31,6 +32,12 @@ export default function(state = initialState, action){
             userBooks: [...state.userBooks, action.payload] //CHANGE LATER
         }
     } 
+    else if(action.type === SET_CHAPTER){
+        return{
+            ...state,
+            selectedChapter: action.payload
+        }
+    }
     else if(action.type === ERROR){
         return{
             ...state,

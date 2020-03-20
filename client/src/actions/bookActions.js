@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_BOOK, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR,UPDATE_BOOK, DELETE_BOOK } from './types';
+import { CREATE_BOOK, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR,UPDATE_BOOK, DELETE_BOOK, SET_CHAPTER } from './types';
 
 export const createBook = (bookData)=>(dispatch)=>{
     console.log("in createbook action");
@@ -119,5 +119,11 @@ export const getAllBooksOfAUser = (userId)=>(dispatch)=>{
             error: err
         });
     });
+}
 
+export const setChapter = (chapter)=>(dispatch)=>{
+    dispatch({
+        type: SET_CHAPTER,
+        payload: chapter
+    });
 }

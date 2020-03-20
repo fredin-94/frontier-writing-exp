@@ -2,7 +2,7 @@
 import React from 'react';
 import Quill from 'components/editor/Quill';
 import {connect} from 'react-redux';
-import {updateChapter} from '../../actions/bookActions';
+import {updateChapter,setChapter} from '../../actions/bookActions';
 import { getIdFromUrl } from 'utils/utils';
 
 class WriteBook extends React.Component{
@@ -23,7 +23,7 @@ class WriteBook extends React.Component{
             content: this.state.text
         }
 
-        this.props.updateChapter(bookId, chapterId, updateData);
+        this.props.updateChapter(bookId, chapterId, updateData);        //change
     }
 
     componentDidMount(){
@@ -32,6 +32,9 @@ class WriteBook extends React.Component{
 
         let chapters = this.props.books.selectedBook.chapters;
         let chapter = chapters.find(chap => chap._id == chapterId);
+
+        console.log(chapter);
+        this.props.setChapter(chapter);
 
         this.setState({
             text: chapter.content,
@@ -59,7 +62,7 @@ const mapStateToProps = (state)=>({
     books: state.books 
 });
 
-export default connect(mapStateToProps, {updateChapter})(WriteBook);
+export default connect(mapStateToProps, {updateChapter, setChapter})(WriteBook);
 
 //need data about which chapter to edit for which book, idk, maybe put that in redux store from the selectedbook page?
 

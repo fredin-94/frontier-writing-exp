@@ -1,5 +1,7 @@
 import ReactQuill from 'react-quill';
 import React from 'react';
+import {connect} from 'react-redux';
+import {updateChapter,setChapter} from '../../actions/bookActions';
 
 class Quill extends React.Component{
 
@@ -19,13 +21,13 @@ class Quill extends React.Component{
         console.log(this.props.text);
 
         this.setState({
-            editorHtml: this.props.text
+            editorHtml: this.props.books.selectedChapter
         });
     }
 
     componentDidUpdate(){
         if(this.props.text !== this.state.editorHtml){
-            this.props.updateText(this.state.editorHtml);
+            //this.props.updateText(this.state.editorHtml);
         }
     }
 
@@ -68,4 +70,10 @@ Quill.formats = [
     'link', 'image'
 ]
   
-export default Quill;
+const mapStateToProps = (state)=>({     //remove??
+    //books: state.books 
+});
+
+//export default Quill;
+export default connect(mapStateToProps, {updateChapter, setChapter})(Quill);
+
