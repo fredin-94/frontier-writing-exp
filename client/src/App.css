@@ -60,7 +60,26 @@ p{
     overflow: hidden;
 }
 
+.book-card-container{
+    display: grid;
+    gap: 1rem; /*change*/
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); /* repeat minmax autofill to max 4? */
+}
 
+.book-card{
+    box-shadow: 0 3px grey;
+    border-radius: 10px;
+    background-color: lavender;
+    overflow: hidden;
+}
+
+.book-card div{
+    padding: 5%;
+}
+
+.book-card img{
+    max-width: 100%;
+}
 
 .btn-container{
     margin-bottom: 5%;

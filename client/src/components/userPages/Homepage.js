@@ -18,8 +18,7 @@ class Homepage extends Component {
         
         console.log(this.props.books.userBooks);
 
-         const displayingBooks = userBooks.map((book)=>
-            <div className="col s12 m4 l3" key={book._id}>
+            {/* <div className="col s12 m4 l3" key={book._id}>
                 <div className="card-size card grey lighten-5">
                     <div className="card-image">
                         <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
@@ -40,7 +39,18 @@ class Homepage extends Component {
                         </div>
                     </div>
                 </div>
-                
+            </div> */}
+
+        const displayingBooks = userBooks.map((book)=>
+
+            <div className="book-card">
+                <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
+                <div>
+                    <span><Link className="title-link" to={`/selectedBook/${book._id}`}>{book.title}</Link></span>
+                    <hr/>
+                    <p className="c-text">{book.summary}</p>
+                    <p className="c-text">{book.language}</p>
+                </div>
             </div>
         ); 
 
@@ -49,7 +59,9 @@ class Homepage extends Component {
         return(
             <div className="row">
                 <p>{amountOfBooks} Books:</p>
-                {displayingBooks}
+                <div class="book-card-container">
+                    {displayingBooks}
+                </div>
             </div>
         );
     }
