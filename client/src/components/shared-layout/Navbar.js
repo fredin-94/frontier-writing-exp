@@ -29,20 +29,19 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
               </Link>
             </li>
           </ul>
-          <ul className="right">
-            <li> <Link to="/about" className="">
+          <ul className="right-navitem">
+            <li> 
+              <Link to="/about" className="">
                 ABOUT
               </Link>
             </li>
             <li>
-              <button className="btn-flat waves-effect waves-teal" onClick={(e)=>{ 
+              <Link  onClick={(e)=>{ 
                 e.preventDefault();
-                this.props.logoutUser(); }}>
-                <Link to="/" className="black-text">
-                      SIGN OUT
-                </Link>
-              </button>
-            
+                this.props.logoutUser(); }}  
+                to="/" className="black-text">
+                SIGN OUT
+              </Link>
             </li>
           </ul>
         </div>
@@ -63,8 +62,9 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
                 </Link>
               </li>
             </ul>
-            <ul className="right">
-              <li> <Link to="/about" className="">
+            <ul className="right-navitem">
+              <li> 
+                <Link to="/about" className="">
                   ABOUT
                 </Link>
               </li>
@@ -78,9 +78,9 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
   render(){
     return(
       <div className="center">
-        <div className="navbar">
+       {/*  <div className="navbar">
           <nav className="z-depth-0">
-            <div className="nav-wrapper teal">
+            <div className="nav-wrapper nav-bg">
             
             <div className="container">
               {this.renderLinks()}
@@ -89,7 +89,14 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
             </div>
           </nav>
 
+        </div> */}
+
+        <div className="main-navbar">
+          <div className="container navbar-content">
+              {this.renderLinks()}
+          </div>
         </div>
+
       </div>
       
     );

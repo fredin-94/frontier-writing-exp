@@ -19,6 +19,7 @@ import EditBook from './components/userPages/EditBook';
 import Root from 'Root'; //idk if all will work if i have 2 stores...
 import CreateBook from 'components/userPages/CreateBook';
 import WriteBook from 'components/userPages/WriteBook';
+import TopOfPage from 'components/shared-layout/TopOfPage';
 //import asyncLoadComponent from 'middlewares/AsyncLoadComponent';
 
 //jwt_decode, setauthtoken , setcurrentuser, logoutuser
@@ -54,8 +55,7 @@ class App extends Component {
       <Root>
         <BrowserRouter>
           <div className="App">
-            <Logo/>
-            <Navbar/>
+            <TopOfPage/>
             <Route exact path="/" component = {LandingPage}/>
             <Route exact path="/register" component = {Register}/>
             <Route exact path="/login" component = {Login}/>

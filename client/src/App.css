@@ -13,6 +13,48 @@ h1 h2 h3 h4 h5 h6{
      
 }
 
+.top-of-page{
+    background: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjIxMTIzfQ&auto=format&fit=crop&w=1950&q=80') center;
+    background-size: cover;
+    padding-top: 5%;
+}
+
+.main-navbar{
+    background-color: rgba(38, 51, 58, 0.6);
+    overflow: hidden;
+}
+
+.navbar-content{
+    text-align: center;
+}
+
+.navbar-content ul{
+  /*   overflow: hidden; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-content li{
+    float: left;
+}
+
+.navbar-content li a{
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+}
+.navbar-content li button{
+  /*   display: block;*/
+} 
+.right-navitem{
+    float:right;
+}
+
+.logo-container{
+    padding-bottom: 2%;
+}
+
 .small-title {
     text-align: left;
 }
@@ -32,8 +74,9 @@ h1 h2 h3 h4 h5 h6{
 }
 
 .title-big{
-    color: black;
-
+    color: #eff9f0;
+    font-family: 'Eczar', serif;
+    font-size: 55px;
 }
 
 .title-link{ /* for a elements that should look like text, but with hover color */
@@ -69,7 +112,7 @@ p{
 .book-card{
     box-shadow: 0 3px grey;
     border-radius: 10px;
-    background-color: lavender;
+    background-color: #eff9f0;
     overflow: hidden;
 }
 
