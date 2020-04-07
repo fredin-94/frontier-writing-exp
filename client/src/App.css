@@ -20,7 +20,7 @@ h1 h2 h3 h4 h5 h6{
 }
 
 .main-navbar{
-    background-color: rgba(38, 51, 58, 0.6);
+    background-color: rgba(87, 79, 77, 0.6);
     overflow: hidden;
 }
 
@@ -29,7 +29,6 @@ h1 h2 h3 h4 h5 h6{
 }
 
 .navbar-content ul{
-  /*   overflow: hidden; */
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -38,17 +37,25 @@ h1 h2 h3 h4 h5 h6{
 .navbar-content li{
     float: left;
 }
+.navbar-content li:hover{
+    background-color: rgba(87, 79, 77, 0.7);
+}
 
 .navbar-content li a{
     display: block;
     text-align: center;
     padding: 14px 16px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
-.navbar-content li button{
-  /*   display: block;*/
-} 
+
 .right-navitem{
     float:right;
+}
+
+.sign-out-nav{
+    color: red;
 }
 
 .logo-container{
@@ -110,9 +117,9 @@ p{
 }
 
 .book-card{
-    box-shadow: 0 3px grey;
+    box-shadow: 0 3px rgba(87, 79, 77, 0.3);
     border-radius: 10px;
-    background-color: #eff9f0;
+    background-color: rgba(87, 79, 77, 0.05);
     overflow: hidden;
 }
 

@@ -39,7 +39,7 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
               <Link  onClick={(e)=>{ 
                 e.preventDefault();
                 this.props.logoutUser(); }}  
-                to="/" className="black-text">
+                to="/" className="sign-out-nav">
                 SIGN OUT
               </Link>
             </li>
@@ -78,25 +78,11 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
   render(){
     return(
       <div className="center">
-       {/*  <div className="navbar">
-          <nav className="z-depth-0">
-            <div className="nav-wrapper nav-bg">
-            
-            <div className="container">
-              {this.renderLinks()}
-            </div>
-
-            </div>
-          </nav>
-
-        </div> */}
-
         <div className="main-navbar">
           <div className="container navbar-content">
               {this.renderLinks()}
           </div>
         </div>
-
       </div>
       
     );
