@@ -23,7 +23,7 @@ class Homepage extends Component {
             <div className="book-card">
                 <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
                 <div>
-                    <span><Link className="title-link" to={`/selectedBook/${book._id}`}>{book.title}</Link></span>
+                    <span><Link className="title-link" to={`/selectedBook/${book._id}`}> <h6> {book.title} </h6> </Link></span>
                    {/*  TODO: add onhover to book title to show summary or something */}
                     <hr/>
                     <p className="c-text">{book.authors}</p>

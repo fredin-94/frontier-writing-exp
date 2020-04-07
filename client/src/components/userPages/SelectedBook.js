@@ -97,13 +97,13 @@ class SelectedBook extends React.Component{
 
     renderPrevBtn = ()=>{
         if(this.state.currentChapter > 1){
-            return <button onClick={this.setChapterToDisplay} className="btn btn-small teal waves-effect">Previous Chapter</button>
+            return <button onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Previous Chapter</button>
         }
     }
 
     renderNextBtn = ()=>{
         //if(this.props.books.selectedBook.chapters.length > 1 ){//&& this.state.currentChapter !== this.props.books.selectedBook.chapters.length
-            return <button  onClick={this.setChapterToDisplay} className="btn btn-small teal waves-effect">Next Chapter</button>
+            return <button  onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Next Chapter</button>
         //}
     }
 
@@ -124,8 +124,8 @@ class SelectedBook extends React.Component{
                         {book.summary}
                    </div>
                    <div className="row">
-                        <button style={{marginRight:'5px'}} onClick={this.handleEditBookBtn} className="btn btn-small teal waves-effect">Edit</button>
-                        <button onClick={this.handleDeleteBookBtn} className="btn btn-small red waves-effect">Delete</button>
+                        <button style={{marginRight:'5px'}} onClick={this.handleEditBookBtn} className="edit-btn btn btn-small waves-effect">Edit</button>
+                        <button onClick={this.handleDeleteBookBtn} className="delete-btn btn btn-small waves-effect">Delete</button>
                    </div>
                 </div>
                 <div className="row">

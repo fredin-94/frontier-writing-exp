@@ -4,13 +4,35 @@ body{
     padding-bottom: 5%;
 }
 
+button{
+    background-color: #dd8585 !important; 
+}
+button:hover{
+    background-color: #c97979 !important;
+}
+.delete-btn{
+    background-color: #b56d6d !important; 
+}
+.delete-btn:hover{
+    background-color: #a16161 !important; 
+}
+.edit-btn{
+    background-color: #628395 !important; 
+}
+.edit-btn:hover{
+    background-color: #8ca4b1 !important; 
+}
+
 hr{
     color: white;
 }
 
 h1 h2 h3 h4 h5 h6{
     color: black;
-     
+}
+
+h6{
+    font-weight: bold;
 }
 
 .top-of-page{
@@ -90,7 +112,7 @@ h1 h2 h3 h4 h5 h6{
     color: black;
 }
 .title-link:hover{
-    color: teal;
+    color: #c97979;
 }
 p{
     color: black;
@@ -101,7 +123,7 @@ p{
     color:black;
 }
 .chapterList:hover{
-    color:teal;
+    color:#c97979;
 }
 
 .card-size{
@@ -124,7 +146,7 @@ p{
 }
 
 .book-card div{
-    padding: 5%;
+    padding: 0 5% 0 5%;
 }
 
 .book-card img{
