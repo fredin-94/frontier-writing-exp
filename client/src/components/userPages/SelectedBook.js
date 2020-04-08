@@ -102,9 +102,11 @@ class SelectedBook extends React.Component{
     }
 
     renderNextBtn = ()=>{
-        //if(this.props.books.selectedBook.chapters.length > 1 ){//&& this.state.currentChapter !== this.props.books.selectedBook.chapters.length
-            return <button  onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Next Chapter</button>
-        //}
+        let chapterLength = this.props.books.selectedBookChaptersLength;
+        console.log("chap len " + chapterLength);
+        if(chapterLength >= 1 && this.state.currentChapter !== chapterLength){//
+            return <button onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Next Chapter</button>
+        }
     }
 
     componentDidMount(){
@@ -138,8 +140,13 @@ class SelectedBook extends React.Component{
                     </div>
                 </div>
                 <div className="row">
-                   {this.renderPrevBtn()}
-                   {this.renderNextBtn()}
+                    <div className="col s6">
+                        {this.renderPrevBtn()}
+                        
+                    </div>
+                    <div className="col s6">
+                        {this.renderNextBtn()}
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col s3"></div>

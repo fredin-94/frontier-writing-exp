@@ -3,15 +3,20 @@ import {GET_ALL_USERS_BOOKS, CREATE_BOOK, GET_BOOK, UPDATE_BOOK, ERROR, SET_CHAP
 const initialState = {
     userBooks: [],
     selectedBook: {}, //idk if needed
-    selectedChapter: {}
+    selectedChapter: {},
+    selectedBookChaptersLength: 0
 }
 
 export default function(state = initialState, action){
 
     if(action.type === GET_BOOK){
+
+        let chapters = action.payload.chapters
+
         return {
             ...state,
-            selectedBook: action.payload
+            selectedBook: action.payload,
+            selectedBookChaptersLength: chapters.length
         }
     }
     else if(action.type === GET_ALL_USERS_BOOKS){

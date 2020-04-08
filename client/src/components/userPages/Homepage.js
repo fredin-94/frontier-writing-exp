@@ -20,7 +20,7 @@ class Homepage extends Component {
 
         const displayingBooks = userBooks.map((book)=>
 
-            <div className="book-card">
+            <div key={book._id} className="book-card">
                 <img alt="Book" src="https://ccplwritersblock.files.wordpress.com/2019/09/shutterstock_1068141515.jpg"/>
                 <div>
                     <span><Link className="title-link" to={`/selectedBook/${book._id}`}> <h6> {book.title} </h6> </Link></span>
@@ -37,7 +37,7 @@ class Homepage extends Component {
         return(
             <div className="row">
                 <p>{amountOfBooks} Books:</p>
-                <div class="book-card-container">
+                <div className="book-card-container">
                     {displayingBooks}
                 </div>
             </div>

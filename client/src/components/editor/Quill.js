@@ -27,7 +27,7 @@ class Quill extends React.Component{
 
     componentDidUpdate(){
         if(this.props.text !== this.state.editorHtml){
-            //this.props.updateText(this.state.editorHtml);
+            this.props.updateText(this.state.editorHtml);
         }
     }
 
@@ -71,7 +71,7 @@ Quill.formats = [
 ]
   
 const mapStateToProps = (state)=>({     //remove??
-    //books: state.books 
+    books: state.books 
 });
 
 //export default Quill;

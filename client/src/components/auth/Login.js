@@ -68,7 +68,7 @@ class Login extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col s8 offset-s2">
-                        <div style={{"padding-top":"3%"}}>
+                        <div style={{"paddingTop":"3%"}}>
                             <Link
                                 to="/"
                                 className="btn-flat waves-effect"
