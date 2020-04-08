@@ -4,7 +4,8 @@ const initialState = {
     userBooks: [],
     selectedBook: {}, //idk if needed
     selectedChapter: {},
-    selectedBookChaptersLength: 0
+    selectedBookChaptersLength: 0,
+    selectedBookChapters: []
 }
 
 export default function(state = initialState, action){
@@ -16,7 +17,8 @@ export default function(state = initialState, action){
         return {
             ...state,
             selectedBook: action.payload,
-            selectedBookChaptersLength: chapters.length
+            selectedBookChaptersLength: chapters.length,
+            selectedBookChapters: chapters
         }
     }
     else if(action.type === GET_ALL_USERS_BOOKS){
@@ -37,7 +39,7 @@ export default function(state = initialState, action){
             userBooks: [...state.userBooks, action.payload] //CHANGE LATER
         }
     } 
-    else if(action.type === SET_CHAPTER){
+    else if(action.type === SET_CHAPTER){ //remove??
         return{
             ...state,
             selectedChapter: action.payload

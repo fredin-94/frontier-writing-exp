@@ -73,14 +73,15 @@ class SelectedBook extends React.Component{
 
     renderBookContent = ()=>{
         console.log(this.props.books.selectedBook.chapters);
-        //const chapter = this.props.books.selectedBook.chapters[this.state.currentChapter-1]; 
+        const chapter = this.props.books.selectedBookChapters[this.state.currentChapter-1]; 
         const book = this.props.books.selectedBook; 
-        // if(book !== undefined && chapter !== undefined){
-        //         return <div key={chapter.title}>
-        //             <h5>{chapter.title}</h5>
-        //             <p>{chapter.content}</p>
-        //         </div>
-        // }
+        if(book !== undefined && chapter !== undefined){
+                 return <div key={chapter.title} className="read-chapter-div">
+                     <h5 className="center"> - {chapter.title} - </h5>
+                     <hr/>
+                     <p>{chapter.content}</p>
+                 </div>
+        }
     }
 
     setChapterToDisplay = (e)=>{
@@ -97,22 +98,20 @@ class SelectedBook extends React.Component{
 
     renderPrevBtn = ()=>{
         if(this.state.currentChapter > 1){
-            return <button onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Previous Chapter</button>
+            return <a onClick={this.setChapterToDisplay}>Previous Chapter</a>
         }
     }
 
     renderNextBtn = ()=>{
         let chapterLength = this.props.books.selectedBookChaptersLength;
-        console.log("chap len " + chapterLength);
-        if(chapterLength >= 1 && this.state.currentChapter !== chapterLength){//
-            return <button onClick={this.setChapterToDisplay} className="btn btn-small waves-effect">Next Chapter</button>
+        if(chapterLength >= 1 && this.state.currentChapter !== chapterLength){
+            return <a className="next-chapter" onClick={this.setChapterToDisplay}>Next Chapter</a>
         }
     }
 
     componentDidMount(){
         const bookId = this.getBookIdFromUrl(); 
         this.props.getBook(bookId);
-        //this.renderBookContent(this.state.currentChapter);
     }
 
     render(){
@@ -120,9 +119,8 @@ class SelectedBook extends React.Component{
         return(
             <div className="container">
                 <div className="row center-align">
-                   <h4>{book.title}</h4>
+                   <h4> - {book.title} - </h4>
                    <div className="row">
-                        <h5>Summary: </h5>
                         {book.summary}
                    </div>
                    <div className="row">
@@ -130,31 +128,28 @@ class SelectedBook extends React.Component{
                         <button onClick={this.handleDeleteBookBtn} className="delete-btn btn btn-small waves-effect">Delete</button>
                    </div>
                 </div>
+                <hr/>
+                <br/> {/*  lol sry, so simple tho */}
                 <div className="row">
-                    <div className="col s2">
+                    <div className="col s2 side-chapters-div">
                         <h6>Chapters: </h6>
                         {this.renderChapters()}
                     </div>
                     <div  className="col s10">
                         {this.renderBookContent()}
+                        <div className="row prev-next-div">
+                                {this.renderPrevBtn()}
+                                {this.renderNextBtn()}
+                        </div>
                     </div>
                 </div>
+                
                 <div className="row">
-                    <div className="col s6">
-                        {this.renderPrevBtn()}
-                        
-                    </div>
-                    <div className="col s6">
-                        {this.renderNextBtn()}
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s3"></div>
-                    <div className="col s6 center-align">
+                    <div className="col s2"></div>
+                    <div className="col s10 center-align">
                         <CommentBox/>
                         <CommentList/>
                     </div>
-                    <div className="col s3"></div>
                 </div>
                
             </div>

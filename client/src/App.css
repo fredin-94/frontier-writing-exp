@@ -4,6 +4,13 @@ body{
     padding-bottom: 5%;
 }
 
+a{
+    color: black;
+}
+a:hover{
+    color: #dd8585;
+}
+
 button{
     background-color: #dd8585 !important; 
 }
@@ -169,6 +176,23 @@ p{
     min-height:500px;
 }
 
+.read-chapter-div{
+    box-shadow: 5px 5px #8ca4b1;
+    background-color: #f7f5ea;
+    padding: 5%;
+    margin-bottom: 3%;
+}
+
+.next-chapter{ /* selectedbook a */
+    float: right;
+}
+.prev-next-div{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.side-chapters-div h6{
+    text-decoration: underline;
+}
 
 
 @media (min-width: 768px){ /*fix this later so they r one below the other*/
