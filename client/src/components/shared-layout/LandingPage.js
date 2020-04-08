@@ -32,13 +32,13 @@ class LandingPage extends React.Component{
                     <div className="col s12 center-align">
                        
                         <h4>Welcome to FWE!</h4>
-                        <h6 style={{color:"teal"}}>Online writing community deluxe</h6>
+                        <h6 style={{color:"#dd8585"}}>- Online writing community deluxe -</h6>
                         <hr/>
                         <p>New member? Sign up! Already a member? Sign in!</p>
                         
                         <div className="btn-container col s12 m6">
                             <Link to="/register" style={{ width: "140px"}}
-                                className="btn btn-large waves-effect waves-light teal hoverable">
+                                className="btn btn-large waves-effect waves-light black white-text hoverable">
                                 Sign Up
                             </Link>
                         </div>

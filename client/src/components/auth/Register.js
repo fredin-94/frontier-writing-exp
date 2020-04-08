@@ -69,15 +69,17 @@ class Register extends React.Component{
             <div className="container">
                 <div className="row">
                     <div className="col s8 offset-s2">
-                        <Link to="/" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i>
-                            Home
-                        </Link>
+                        
+                        <div style={{"padding-top":"3%"}}>
+                            <Link to="/" className="btn-flat waves-effect">
+                                <i className="material-icons left">keyboard_backspace</i>
+                                Home
+                            </Link>
+                        </div>
                         
                         <div className="col s12">
                             <h4>Register an account:</h4>
-                            <p>Already have an account? Login:</p>
-                            <Link to="/login">Login page</Link>
+                            <p>Already have an account? <Link to="/login">Log in here!</Link></p>
                         </div>
 
                         <form noValidate onSubmit={this.onSubmit}>
@@ -140,7 +142,7 @@ class Register extends React.Component{
                             <div className="col s12">
                                 <button
                                     type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable teal"
+                                    className="btn btn-large waves-effect waves-light hoverable"
                                 >
                                     Sign up
                                 </button>

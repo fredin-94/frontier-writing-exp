@@ -143,6 +143,7 @@ p{
     border-radius: 10px;
     background-color: rgba(87, 79, 77, 0.05);
     overflow: hidden;
+    text-transform: uppercase;
 }
 
 .book-card div{

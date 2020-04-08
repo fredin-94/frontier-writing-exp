@@ -68,19 +68,19 @@ class Login extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col s8 offset-s2">
-                        <Link
-                            to="/"
-                            className="btn-flat waves-effect"
-                        >
-                            <i className="material-icons left">keyboard_backspace</i>
-                            Home
-                        </Link>
+                        <div style={{"padding-top":"3%"}}>
+                            <Link
+                                to="/"
+                                className="btn-flat waves-effect"
+                            >
+                                <i className="material-icons left">keyboard_backspace</i>
+                                Home
+                            </Link>
+                        </div>
                         <div className="col s12">
                             <h4>Log in </h4>
-                            <p>Don't have an account yet? Register: </p>
-                            <Link to="/register">Register</Link>
+                            <p>Don't have an account yet?  <Link to="/register">Register here!</Link> </p>
                         </div>
-
                         <form noValidate onSubmit={this.onSubmit}>
                             <div className="input-field col s12">
                                 <input
@@ -116,7 +116,7 @@ class Login extends React.Component {
                                     {errors.passwordincorrect}
                                 </span>
                             </div>
-                            <div>
+                            <div className="col s12">
                                 <button
                                     type="submit"
                                     className="btn btn-large waves-effect hoverable button-color"
