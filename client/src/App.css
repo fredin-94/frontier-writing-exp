@@ -11,6 +11,15 @@ a:hover{
     color: #dd8585;
 }
 
+li{
+    color: black;
+    display: inline;        /*for selectedbook*/
+    list-style-type: none;
+}
+li:hover{
+    color: #dd8585;
+}
+
 button{
     background-color: #dd8585 !important; 
 }
@@ -126,12 +135,12 @@ p{
 
 }
 
-.chapterList{
+/* .chapterList{
     color:black;
 }
 .chapterList:hover{
     color:#c97979;
-}
+} */
 
 .card-size{
     height: 400px;
