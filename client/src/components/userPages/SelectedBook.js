@@ -58,7 +58,7 @@ class SelectedBook extends React.Component{
         console.log(e.target.id);
         let chapterId = e.target.id;
         for(let i = 0; i < this.props.books.selectedBookChaptersLength; i++){
-            if( this.props.books.selectedBook.chapters[i]._id == chapterId ){
+            if( this.props.books.selectedBook.chapters[i]._id === chapterId ){
                 this.setState({
                     currentChapter: i
                 });

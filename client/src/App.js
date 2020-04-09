@@ -1,16 +1,14 @@
 import React, {Component, Suspense} from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import jwt_decode from 'jwt-decode'; //
+import jwt_decode from 'jwt-decode';
 //Local:
-import store from './store'; //c
-import Navbar from './components/shared-layout/Navbar';
-import Logo from './components/shared-layout/Logo';
+import store from './store'; 
 import LandingPage from './components/shared-layout/LandingPage';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import './App.css';
-import setAuthToken from './utils/setAuthToken'; //
-import {setCurrentUser, logoutUser} from './actions/authActions'; //
+import setAuthToken from './utils/setAuthToken'; 
+import {setCurrentUser, logoutUser} from './actions/authActions'; 
 import PrivateRoutes from './components/private-routes/PrivateRoutes';
 import Homepage from './components/userPages/Homepage';
 import SelectedBook from './components/userPages/SelectedBook';

@@ -5,11 +5,22 @@ import {connect} from 'react-redux';
 
 class EditBook extends React.Component{
 
+    state = {
+        addChapter : false,
+        title: '',
+        authors: '', //or authors??
+        chapters: [],
+        chapter: '',
+        summary: '',
+        language: '',
+        creator: ''
+    }
+
     componentDidMount(){
 
     }
 
-    render(){
+    render(){ 
         return(
             <div className="container">
                 <h5>Edit book</h5>
@@ -19,7 +30,7 @@ class EditBook extends React.Component{
                     <input id="title" onChange={(e)=>this.setState({title: e.target.value})} type="text"/>
                     <br/>
                     <label htmlFor="author">Author name: </label> 
-                    <input id="title" value={this.state.author} onChange={(e)=>this.setState({author: e.target.value})} type="text"/>
+                    <input id="title" value={this.state.author} onChange={(e)=>this.setState({authors: e.target.value})} type="text"/>
 
                     <label htmlFor="summary">Summary: </label>
                     <textarea id="summary" onChange={this.handleSummary}/>        
