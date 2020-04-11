@@ -16,7 +16,7 @@ export default function(state = initialState, action){
 
         return {
             ...state,
-            selectedBook: action.payload,
+            selectedBook: action.payload, 
             selectedBookChaptersLength: chapters.length,
             selectedBookChapters: chapters
         }

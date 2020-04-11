@@ -91,7 +91,7 @@ export const updateChapter = (bookId, chapterId, data)=>(dispatch)=>{
         });
     })
     .catch((err)=>{
-        console.log(err);
+        console.log(err); 
         dispatch({
             type: ERROR,
             error: err

@@ -15,8 +15,10 @@ class WriteBook extends React.Component{
 
     componentWillUnmount(){ //update book in DB before exiting page
         var url = window.location.href;
-        let chapterId = getIdFromUrl(url, 1);
+        let chapterId = this.state.chapterId;
         let bookId = this.props.books.selectedBook._id;
+        console.log("state texxt");
+        console.log(this.state.text);
 
         let updateData = {
             title: this.state.chapterName,
@@ -38,11 +40,15 @@ class WriteBook extends React.Component{
 
         this.setState({
             text: chapter.content,
-            chapterName: chapter.title
+            chapterName: chapter.title,
+            chapterId : chapterId
         });
     }
 
-    updateText = (text)=>{
+    updateText = ()=>{
+        let text = document.getElementById("ta").value;
+        console.log("text update:");
+        console.log(text);
         this.setState({ 
             text: text 
         });
@@ -52,7 +58,8 @@ class WriteBook extends React.Component{
         return(
             <div className="container">
                 <h4>{this.state.chapterName}</h4>
-                <Quill text={this.state.text} updateText={this.updateText}/>
+                <textarea id="ta" defaultValue={this.state.text} onChange={this.updateText}/>
+                {/* <Quill text={this.state.text} updateText={this.updateText}/> */}
             </div>
         );
     }

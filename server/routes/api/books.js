@@ -161,7 +161,7 @@ router.get('/:id/:chapterId', (req, res, next)=>{
 //update a chapter
 router.patch("/:id/:chapterId", (req, res, next)=>{
 
-    console.log(req.body.content);
+    console.log(req.body);
     console.log(">>>>>>>>>>>PATCH >>>>>>>>>>>");
 
     const bookId = req.params.id;
@@ -172,26 +172,35 @@ router.patch("/:id/:chapterId", (req, res, next)=>{
             console.log(err);
             return res.status(400).json("Error in request");
         }
+        console.log(">>>>>>>>>>>no err patch >>>>>>>>>>>");
     
         let chps = book.chapters;
         for(let i = 0; i < chps.length; i++){
+            //console.log(" >>>>>>>>>>>> in for loop patch . + req-content: ");
+            //console.log(req.body.content);
+            console.log("chapter");
+            console.log(chps[i]._id);
+            console.log(chapterId);
 
             if(chps[i]._id == chapterId){
                 console.log(chps[i]);
 
                 if(req.body.content !== null){
-                    chps[i].content = req.body.content;
+                    book.chapters[i].content = req.body.content;
                 }else{
-                    chps[i].content = chps[i].content;
+                    book.chapters[i].content = chps[i].content;
                 }
                 if(req.body.title !== null && req.body.title !== ""){
-                    chps[i].title = req.body.title;
+                    book.chapters[i].title = req.body.title;
                 }else{
-                    chps[i].title = chps[i].title;
+                    book.chapters[i].title = chps[i].title;
                 }
                 break;
             }
         } 
+
+        //console.log("book");
+        //console.log(book);
 
         book.save((err, book)=>{
             if(err){
