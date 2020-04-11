@@ -95,12 +95,14 @@ class SelectedBook extends React.Component{
     renderBookContent = ()=>{
         console.log(this.props.books.selectedBook.chapters);
         const chapter = this.props.books.selectedBookChapters[this.state.currentChapter]; 
+        let frag = document.createRange().createContextualFragment(chapter.content);
+        var fragment = new DocumentFragment();
         const book = this.props.books.selectedBook; 
         if(book !== undefined && chapter !== undefined){
                  return <div key={chapter.title} className="read-chapter-div">
                      <h5 className="center"> - {chapter.title} - </h5>
                      <hr/>
-                     <p>{chapter.content}</p>
+                     {fragment.appendChild(frag)}
                  </div>
         }
     }
