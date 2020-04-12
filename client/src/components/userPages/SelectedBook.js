@@ -48,16 +48,12 @@ class SelectedBook extends React.Component{
 
     handleSelectChapter = (e)=>{
         e.preventDefault();
-        console.log(e.target.value);
         this.setState({
             selectedChapter: e.target.value //check this
         });
     }
 
     setCurrentChapter = (e)=>{ /* doesnt work */
-        console.log("chapter value: ");
-        console.log(e.target);
-        console.log(e.target.id);
         let chapterId = e.target.id;
         for(let i = 0; i < this.props.books.selectedBookChaptersLength; i++){
             if( this.props.books.selectedBook.chapters[i]._id === chapterId ){
@@ -73,7 +69,6 @@ class SelectedBook extends React.Component{
 
     renderChapters = ()=>{
         const chapters = this.props.books.selectedBook.chapters; 
-        console.log("chapts: " +  this.props.books.selectedBook.chapters);
         const book = this.props.books.selectedBook; 
         const bookId = this.getBookIdFromUrl();
         if(book !== undefined && chapters!== undefined){
@@ -95,7 +90,6 @@ class SelectedBook extends React.Component{
     }
 
     renderBookContent = ()=>{
-        console.log(this.props.books.selectedBook.chapters);
         const chapter = this.props.books.selectedBookChapters[this.state.currentChapter]; 
         const book = this.props.books.selectedBook; 
         if(book !== undefined && chapter !== undefined){
@@ -147,10 +141,6 @@ class SelectedBook extends React.Component{
         const chapter = this.props.books.selectedBookChapters[this.state.currentChapter]; 
         const book = this.props.books.selectedBook; 
         if(book !== undefined && chapter !== undefined){
-           /*  this.setState({
-                chapterContent: chapter.content
-            }); */
-
             return chapter.content
         }
     }
@@ -176,7 +166,7 @@ class SelectedBook extends React.Component{
                    </div>
                 </div>
                 <hr/>
-                <br/> {/*  lol sry, so simple tho */}
+                <br/>
                 <div className="row">
                     <div className="col s2 side-chapters-div">
                         <h6>Chapters: </h6>
@@ -189,15 +179,6 @@ class SelectedBook extends React.Component{
                                 {this.renderNextBtn()}
                         </div>
                     </div>
-                   {/*  <div className="col s10">
-                        <ReactQuill
-                        readOnly
-                        theme='snow'
-                        value={this.setChapterContent}
-                        modules={SelectedBook.modules}
-                        bounds={'.app'}
-                        />
-                    </div> */}
                 </div>
                 
                 <div className="row">

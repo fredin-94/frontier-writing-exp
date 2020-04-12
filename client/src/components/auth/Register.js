@@ -142,7 +142,7 @@ class Register extends React.Component{
                             <div className="col s12">
                                 <button
                                     type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable"
+                                    className="btn btn-large waves-effect waves-light hoverable common-button"
                                 >
                                     Sign up
                                 </button>

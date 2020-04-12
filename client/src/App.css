@@ -23,9 +23,15 @@ li:hover{
 }
 
 button{
-    background-color: #dd8585 !important; 
+    background-color: white; 
 }
 button:hover{
+    background-color: #8ca4b1;
+}
+.common-button{
+    background-color: #dd8585 !important; 
+}
+.common-button:hover{
     background-color: #c97979 !important;
 }
 .delete-btn{

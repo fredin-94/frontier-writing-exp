@@ -18,8 +18,6 @@ class WriteBook extends React.Component{
         //var url = window.location.href;
         let chapterId = this.state.chapterId;
         let bookId = this.props.books.selectedBook._id;
-        console.log("state texxt");
-        console.log(this.state.text);
 
         let updateData = {
             title: this.state.chapterName,
@@ -30,13 +28,12 @@ class WriteBook extends React.Component{
     }
 
     componentDidMount(){
-        //var url = window.location.href;
-        let chapterId = this.props.books.selectedBook._id;
+        var url = window.location.href;
+        let chapterId = getIdFromUrl(url, 1);
 
         let chapters = this.props.books.selectedBook.chapters;
         let chapter = chapters.find(chap => chap._id == chapterId);
 
-        console.log(chapter);
         this.props.setChapter(chapter);
 
         this.setState({
@@ -47,8 +44,6 @@ class WriteBook extends React.Component{
     }
 
     handleChange = (text)=>{
-        console.log("text update:");
-        console.log(text);
         this.setState({ 
             text: text 
         });
@@ -71,17 +66,13 @@ class WriteBook extends React.Component{
     }
 }
 
-
-
-
 WriteBook.modules = {
     toolbar: [
         [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
         [{size: []}],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{'list': 'ordered'}, {'list': 'bullet'}, 
-        {'indent': '-1'}, {'indent': '+1'}],
-        ['link', 'image'],
+        {'indent': '-1'}, {'indent': '+1'}]
     ],
     clipboard: {
         matchVisual: false,
@@ -91,12 +82,8 @@ WriteBook.modules = {
 WriteBook.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image'
+    'list', 'bullet', 'indent'
 ]
-
-
-
 
 const mapStateToProps = (state)=>({
     books: state.books 

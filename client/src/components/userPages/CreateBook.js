@@ -76,12 +76,12 @@ class CreateBook extends Component {
                 <div>
                     <label>Name of chapter: </label>
                     <input id="chapter" onChange={(e)=>{this.setState({chapter: e.target.value})}} type="text"/>
-                    <button onClick={this.addChapterToState} className="waves-effect waves-light btn-small" >Add</button> 
+                    <button onClick={this.addChapterToState} className="waves-effect waves-light btn-small common-button" >Add</button> 
                 </div>
             );
         }else {
            return(
-            <button onClick={this.onClickAddChapter} className="waves-effect waves-light btn-small">Add Chapter</button> /* should set add chapter to true */
+            <button onClick={this.onClickAddChapter} className="waves-effect waves-light btn-small common-button">Add Chapter</button> /* should set add chapter to true */
            );
         }
     }
@@ -162,7 +162,7 @@ class CreateBook extends Component {
                     </div>
                     
                     <div className="row center">
-                        <button disabled={!this.state.author || !this.state.title || !this.state.language} className="waves-effect waves-light btn" onClick={this.handleCreateBook}>Create book</button>
+                        <button disabled={!this.state.author || !this.state.title || !this.state.language} className="waves-effect waves-light btn common-button" onClick={this.handleCreateBook}>Create book</button>
                     </div>
                 </form>
             </div>

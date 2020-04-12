@@ -67,7 +67,7 @@ class Homepage extends Component {
 
                         <hr/>
                         <div>
-                            <button className="waves-effect waves-light btn">
+                            <button className="waves-effect waves-light btn common-button">
                                 <Link  style={{ color: '#FFF' }} to='/createBook'>Create a new book</Link>    
                             </button>
                         </div>
