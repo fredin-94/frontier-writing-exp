@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import CommentBox from '../comments/CommentBox';
 import CommentList from '../comments/CommentList';
 import {Link} from "react-router-dom";
+import ReactQuill from 'react-quill';
 
 //import JoditEditor from '../joditEditorHook/JoditEditor'; //if i remove remember to remove from json n rebuild
 
@@ -13,6 +14,7 @@ class SelectedBook extends React.Component{
     
     state = {
         selectedChapter: '',
+        chapterContent: '',
         currentChapter: 0
     }
 
@@ -95,15 +97,20 @@ class SelectedBook extends React.Component{
     renderBookContent = ()=>{
         console.log(this.props.books.selectedBook.chapters);
         const chapter = this.props.books.selectedBookChapters[this.state.currentChapter]; 
-        let frag = document.createRange().createContextualFragment(chapter.content);
-        var fragment = new DocumentFragment();
         const book = this.props.books.selectedBook; 
         if(book !== undefined && chapter !== undefined){
-                 return <div key={chapter.title} className="read-chapter-div">
-                     <h5 className="center"> - {chapter.title} - </h5>
-                     <hr/>
-                     {fragment.appendChild(frag)}
-                 </div>
+                 return <div className="read-chapter-div">
+                            <h5 className="center"> - {chapter.title} - </h5>
+                            <hr/>
+                            <br/>
+                            <ReactQuill
+                            readOnly
+                            theme='snow'
+                            value={chapter.content}
+                            modules={SelectedBook.modules}
+                            bounds={'.app'}
+                            />
+                        </div>
         }
     }
 
@@ -111,10 +118,14 @@ class SelectedBook extends React.Component{
         if(e.target.textContent === "Next Chapter"){ //put in state?
             this.setState({
                 currentChapter: this.state.currentChapter+1
+            },()=>{
+                this.setChapterContent();
             });
         }else{ //go prev chapter
             this.setState({
                 currentChapter: this.state.currentChapter-1
+            }, ()=>{
+                this.setChapterContent();
             });
         }
     }
@@ -132,9 +143,22 @@ class SelectedBook extends React.Component{
         }
     }
 
+    setChapterContent = ()=>{
+        const chapter = this.props.books.selectedBookChapters[this.state.currentChapter]; 
+        const book = this.props.books.selectedBook; 
+        if(book !== undefined && chapter !== undefined){
+           /*  this.setState({
+                chapterContent: chapter.content
+            }); */
+
+            return chapter.content
+        }
+    }
+
     componentDidMount(){
         const bookId = this.getBookIdFromUrl(); 
         this.props.getBook(bookId);
+        this.setChapterContent();
     }
 
     render(){
@@ -158,13 +182,22 @@ class SelectedBook extends React.Component{
                         <h6>Chapters: </h6>
                         {this.renderChapters()}
                     </div>
-                    <div  className="col s10">
+                    <div className="col s10">
                         {this.renderBookContent()}
                         <div className="row prev-next-div">
                                 {this.renderPrevBtn()}
                                 {this.renderNextBtn()}
                         </div>
                     </div>
+                   {/*  <div className="col s10">
+                        <ReactQuill
+                        readOnly
+                        theme='snow'
+                        value={this.setChapterContent}
+                        modules={SelectedBook.modules}
+                        bounds={'.app'}
+                        />
+                    </div> */}
                 </div>
                 
                 <div className="row">
@@ -180,6 +213,10 @@ class SelectedBook extends React.Component{
     }
 
 }
+
+SelectedBook.modules = {
+    toolbar: false,
+};
 
 const mapStateToProps = (state)=>({
     books: state.books 

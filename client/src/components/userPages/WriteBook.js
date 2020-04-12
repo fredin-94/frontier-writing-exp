@@ -1,6 +1,6 @@
 //import text editor here
 import React from 'react';
-import Quill from 'components/editor/Quill';
+//import Quill from 'components/editor/Quill';
 import {connect} from 'react-redux';
 import {updateChapter,setChapter} from '../../actions/bookActions';
 import { getIdFromUrl } from 'utils/utils';
@@ -62,8 +62,8 @@ class WriteBook extends React.Component{
                 theme='snow'
                 onChange={this.handleChange}
                 value={this.state.text}
-                modules={Quill.modules}
-                formats={Quill.formats}
+                modules={WriteBook.modules}
+                formats={WriteBook.formats}
                 bounds={'.app'}
                 />
             </div>
@@ -74,7 +74,7 @@ class WriteBook extends React.Component{
 
 
 
-Quill.modules = {
+WriteBook.modules = {
     toolbar: [
         [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
         [{size: []}],
@@ -88,7 +88,7 @@ Quill.modules = {
     }
 }
  
-Quill.formats = [
+WriteBook.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
