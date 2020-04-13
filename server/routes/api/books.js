@@ -35,7 +35,6 @@ router.post('/', (req, res, next)=>{
             return res.status(400).json(err);
         }
         console.log(">>>>>>>>>>>>>>>> SAVED BOOK");
-        console.log(book);
         return res.status(201).json(book);
     });
 });
@@ -67,7 +66,6 @@ router.get("/:id", (req, res, next)=>{
             
         }
         console.log("successful get req");
-        console.log(data);
         return res.status(200).json(data);
 
     });
@@ -94,21 +92,6 @@ router.delete("/:id", (req, res, next)=>{
 
 //update the book if any fields have changed, on only the changed fields
 router.patch("/:id", (req, res, next)=>{
-
- /*    const bookId = req.params.id;
-    const bookParamsToUpdate = req.body;
-
-    Book.findByIdAndUpdate( {_id: bookId} , bookParamsToUpdate, (err, data)=>{
-        if(err){
-            console.log(err);
-            return res.status(400).json("Error in request");
-        }
-
-        return res.status(204).json(data);
-    }); */
-
-
-    
     const bookId = req.params.id;
     const chapterId = req.body.chapterId;
 
@@ -161,9 +144,6 @@ router.get('/:id/:chapterId', (req, res, next)=>{
 //update a chapter
 router.patch("/:id/:chapterId", (req, res, next)=>{
 
-    console.log(req.body);
-    console.log(">>>>>>>>>>>PATCH >>>>>>>>>>>");
-
     const bookId = req.params.id;
     const chapterId = req.params.chapterId;
 
@@ -172,19 +152,10 @@ router.patch("/:id/:chapterId", (req, res, next)=>{
             console.log(err);
             return res.status(400).json("Error in request");
         }
-        console.log(">>>>>>>>>>>no err patch >>>>>>>>>>>");
     
         let chps = book.chapters;
         for(let i = 0; i < chps.length; i++){
-            //console.log(" >>>>>>>>>>>> in for loop patch . + req-content: ");
-            //console.log(req.body.content);
-            console.log("chapter");
-            console.log(chps[i]._id);
-            console.log(chapterId);
-
             if(chps[i]._id == chapterId){
-                console.log(chps[i]);
-
                 if(req.body.content !== null){
                     book.chapters[i].content = req.body.content;
                 }else{
@@ -198,10 +169,6 @@ router.patch("/:id/:chapterId", (req, res, next)=>{
                 break;
             }
         } 
-
-        //console.log("book");
-        //console.log(book);
-
         book.save((err, book)=>{
             if(err){
                 return res.status(400).json(err);
@@ -209,11 +176,6 @@ router.patch("/:id/:chapterId", (req, res, next)=>{
             return res.status(204).json(book);
         });
     });
-
-    //find right chapter n update its content
-
 });
 
-
 module.exports = router;
-

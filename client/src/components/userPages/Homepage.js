@@ -15,9 +15,6 @@ class Homepage extends Component {
 
     renderAllUserBooks = ()=>{
         const userBooks = this.props.books.userBooks;
-        
-        console.log(this.props.books.userBooks);
-
         const displayingBooks = userBooks.map((book)=>
 
             <div key={book._id} className="book-card">

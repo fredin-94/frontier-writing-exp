@@ -16,9 +16,6 @@ class Navbar extends React.Component{ //choose which to show for logged in /out 
   }; 
 
   renderLinks(){
-
-    console.log("in renderLinksNavbar, " + this.props.auth.isAuthenticated);
-
     if(this.props.auth.isAuthenticated){
       return(
         <div>

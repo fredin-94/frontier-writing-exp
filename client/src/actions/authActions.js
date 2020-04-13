@@ -5,8 +5,6 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import {GET_ERRORS, SET_CURRENT_USER, USER_LOADING} from './types';
 
-//http requests
-
 export const registerUser  = (userData, history)=>(dispatch)=>{
     axios.post('/api/users/register', userData)
     .then((res)=>{
@@ -45,14 +43,10 @@ export const loginUser = (userData)=>(dispatch)=>{
     .then((res)=>{
         const token = res.data.token;
 
-
         localStorage.setItem('jwtToken', token); //store token in browser memory so that user doesnt get logged out everytime they go to a new page
         setAuthToken(token);
         const decoded = jwt_decode(token); //decode so that we can get user data from the token
         dispatch(setCurrentUser(decoded));
-
-        console.log('in loginuder action, res bracket for axioz');
-
     })
     .catch((err)=>{
         if(err.response === null){

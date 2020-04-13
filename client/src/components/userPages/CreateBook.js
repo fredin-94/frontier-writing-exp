@@ -30,21 +30,13 @@ class CreateBook extends Component {
             language: this.state.language,
             creator: this.state.creator
         }
-
-        console.log("Current book:");
-        console.log(newBook);
-
         this.props.createBook(newBook);
-
         //show user page only if book saving was success
         this.props.history.push('/homepage');
     }
 
     onClickAddChapter = (e)=>{
         e.preventDefault();
-
-        console.log("clicked btn");
-
         this.setState({
             addChapter: true
         });

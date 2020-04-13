@@ -2,7 +2,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//schema
 const UserSchema = new Schema({
   name : {
     type: String,
@@ -33,5 +32,4 @@ const UserSchema = new Schema({
   }
 });
 
-//make it seeable
 module.exports = User = mongoose.model('users', UserSchema);

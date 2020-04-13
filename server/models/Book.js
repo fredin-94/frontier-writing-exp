@@ -49,5 +49,4 @@ const BookSchema = new Schema({
   }
 });
 
-//make it seeable
 module.exports = Book = mongoose.model('books', BookSchema);

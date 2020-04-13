@@ -2,7 +2,6 @@ import axios from 'axios';
 import { CREATE_BOOK, GET_BOOK, GET_ALL_USERS_BOOKS, ERROR,UPDATE_BOOK, DELETE_BOOK, SET_CHAPTER } from './types';
 
 export const createBook = (bookData)=>(dispatch)=>{
-    console.log("in createbook action");
     axios.post('/api/books', bookData)
     .then((res)=>{
 
@@ -100,7 +99,6 @@ export const updateChapter = (bookId, chapterId, data)=>(dispatch)=>{
 }
 
 export const getAllBooksOfAUser = (userId)=>(dispatch)=>{
-    console.log("GET ALL BOOKS OF USER ACTION");
     axios.get(`/api/books/user/${userId}`)
     .then((res)=>{
 
@@ -112,7 +110,7 @@ export const getAllBooksOfAUser = (userId)=>(dispatch)=>{
         });
     })
     .catch((err)=>{
-        console.log("THERE WAS AN ERROR");
+        console.log("ERROR get all books");
 
         dispatch({
             type: ERROR,
